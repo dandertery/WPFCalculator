@@ -4,9 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFCalculator"
+        xmlns:userControls="clr-namespace:WPFCalculator.View.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height= "20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        
+        
+        
+        
+        <!-- Menu Bar -->
+        <userControls:MenuBar/>
+        <!-- Content Pane -->
+      
+        <Grid Name ="ContentGrid" Grid.Row="1">
+            
+        </Grid>
+             
+        <!-- Footer -->
+        <Grid Name ="FooterGrid" Grid.Row="2">
+            
+        </Grid>
+              
     </Grid>
 </Window>
+    
