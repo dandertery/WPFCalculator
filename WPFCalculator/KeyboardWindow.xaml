@@ -1,0 +1,67 @@
+﻿<Window x:Class="WPFCalculator.KeyboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFCalculator"
+        xmlns:userControls="clr-namespace:WPFCalculator.View.UserControls"
+        mc:Ignorable="d"
+        Title="KeyboardWindow" Height="300" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <userControls:Key Grid.Row="0" Grid.Column="0" Placeholder="1"/>
+        <userControls:Key Grid.Row="0" Grid.Column="1" Placeholder="1"/>
+        <userControls:Key Grid.Row="0" Grid.Column="2" Placeholder="1"/>
+        <userControls:Key Grid.Row="0" Grid.Column="3" Placeholder="1"/>
+        <userControls:Key Grid.Row="0" Grid.Column="4" Placeholder="1"/>
+        <userControls:Key Grid.Row="0" Grid.Column="5" Placeholder="1"/>
+        <userControls:Key Grid.Row="0" Grid.Column="6" Placeholder="1"/>
+        <userControls:Key Grid.Row="1" Grid.Column="0" Placeholder="7"/>
+        <userControls:Key Grid.Row="1" Grid.Column="1" Placeholder="8"/>
+        <userControls:Key Grid.Row="1" Grid.Column="2" Placeholder="9"/>
+        <userControls:Key Grid.Row="1" Grid.Column="3" Placeholder="1"/>
+        <userControls:Key Grid.Row="1" Grid.Column="4" Placeholder="1"/>
+        <userControls:Key Grid.Row="1" Grid.Column="5" Placeholder="1"/>
+        <userControls:Key Grid.Row="1" Grid.Column="6" Placeholder="1"/>
+        <userControls:Key Grid.Row="2" Grid.Column="0" Placeholder="4"/>
+        <userControls:Key Grid.Row="2" Grid.Column="1" Placeholder="5"/>
+        <userControls:Key Grid.Row="2" Grid.Column="2" Placeholder="6"/>
+        <userControls:Key Grid.Row="2" Grid.Column="3" Placeholder="1"/>
+        <userControls:Key Grid.Row="2" Grid.Column="4" Placeholder="1"/>
+        <userControls:Key Grid.Row="2" Grid.Column="5" Placeholder="1"/>
+        <userControls:Key Grid.Row="2" Grid.Column="6" Placeholder="1"/>
+        <userControls:Key Grid.Row="3" Grid.Column="0" Placeholder="1"/>
+        <userControls:Key Grid.Row="3" Grid.Column="1" Placeholder="2"/>
+        <userControls:Key Grid.Row="3" Grid.Column="2" Placeholder="3"/>
+        <userControls:Key Grid.Row="3" Grid.Column="3" Placeholder="1"/>
+        <userControls:Key Grid.Row="3" Grid.Column="4" Placeholder="1"/>
+        <userControls:Key Grid.Row="3" Grid.Column="5" Placeholder="1"/>
+        <userControls:Key Grid.Row="3" Grid.Column="6" Placeholder="1"/>
+        <userControls:Key Grid.Row="4" Grid.Column="0" Placeholder="0"/>
+        <userControls:Key Grid.Row="4" Grid.Column="1" Placeholder="."/>
+        <userControls:Key Grid.Row="4" Grid.Column="2" Placeholder=":)"/>
+        <userControls:Key Grid.Row="4" Grid.Column="3" Placeholder="1"/>
+        <userControls:Key Grid.Row="4" Grid.Column="4" Placeholder="1"/>
+        <userControls:Key Grid.Row="4" Grid.Column="5" Placeholder="1"/>
+        <userControls:Key Grid.Row="4" Grid.Column="6" Placeholder="1"/>
+        
+
+    </Grid>
+</Window>

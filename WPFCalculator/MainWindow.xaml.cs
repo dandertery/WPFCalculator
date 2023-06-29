@@ -8,7 +8,10 @@ namespace WPFCalculator
         public MainWindow()
         {
             InitializeComponent();
-
+            KeyboardWindow keyboardWindow = new KeyboardWindow();
+            keyboardWindow.Show();
+            DBExample example = new DBExample();
+            example.Show();
             
         }
 

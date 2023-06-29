@@ -1,0 +1,21 @@
+﻿<Window x:Class="WPFCalculator.DBExample"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFCalculator"
+        mc:Ignorable="d"
+        Title="DBExample" Height="200" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Name="txtInput" VerticalContentAlignment="Center" Width="250" Height="40"
+                 FontSize="16" Text="{Binding BoundText,UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Row="1" Name="btnSet" Content="set" Width="100" Height="40" Click="btnSet_Click"/>
+        <TextBlock Grid.Row="2" Name="tbResult" FontSize="16" Text="{Binding BoundText}"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
