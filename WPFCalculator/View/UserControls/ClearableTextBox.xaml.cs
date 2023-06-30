@@ -15,14 +15,36 @@ using System.Windows.Shapes;
 
 namespace WPFCalculator.View.UserControls
 {
-    /// <summary>
-    /// Interaction logic for ClearableTextBox.xaml
-    /// </summary>
+    
     public partial class ClearableTextBox : UserControl
     {
+        private string userInput;
         public ClearableTextBox()
         {
             InitializeComponent();
+        }
+
+
+
+
+        private void GenerateButton_Click(object sender, RoutedEventArgs e)
+        {
+            userInput = txtInput.Text;
+            txtInput.Clear();
+            txtInput.Focus();
+            RaiseUserInput(userInput);
+        }
+        public event Action<string> RaiseUserInput;
+        private void txtInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtInput.Text))
+            {
+                tbPlaceHolder.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tbPlaceHolder.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

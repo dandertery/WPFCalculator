@@ -6,14 +6,15 @@
              xmlns:local="clr-namespace:WPFCalculator.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="400">
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85*"/>
             <ColumnDefinition Width="15*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="txtInput" Grid.Column="0"  VerticalAlignment="Center"
-                 FontSize="16" FontWeight="Light"/>
-        <TextBlock x:Name="tbPlaceHolder" Text="hello there" Grid.Column="0" FontSize="16" FontWeight="Light" VerticalAlignment="Center" Foreground="DarkGray" Margin="5,0,0,0"/>
-        <Button x:Name="GenerateButton" Width="auto"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Generate" HorizontalContentAlignment ="Center"/>
+                 FontSize="16" FontWeight="Light" Background="Transparent" TextChanged="txtInput_TextChanged"/>
+        <TextBlock x:Name="tbPlaceHolder" Panel.ZIndex="-1" Text="Enter expression" Grid.Column="0" FontSize="16" FontWeight="Light" VerticalAlignment="Center" Foreground="DarkGray" Margin="5,0,0,0"/>
+        <Button x:Name="GenerateButton" Width="auto"  Grid.Column="1" HorizontalAlignment="Center"
+                VerticalAlignment="Center" Content="Generate" HorizontalContentAlignment ="Center" Click="GenerateButton_Click"/>
     </Grid>
 </UserControl>

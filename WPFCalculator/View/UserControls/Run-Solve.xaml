@@ -16,7 +16,18 @@
             <ColumnDefinition/>
             
         </Grid.ColumnDefinitions>
-        <userControls:ClearableTextBox Grid.Row="1" Margin="5,0,0,0" Panel.ZIndex="1"/>
+        <userControls:ClearableTextBox Grid.Row="1" Margin="5,0,0,0" Panel.ZIndex ="1" RaiseUserInput="ClearableTextBox_RaiseUserInput"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="InputList" Grid.Column="0" FontSize="16"/>
+            <ListView x:Name="OutputList" Grid.Column="1" FontSize="16"/>
+            
 
+
+        </Grid>
+            
     </Grid>
 </UserControl>
