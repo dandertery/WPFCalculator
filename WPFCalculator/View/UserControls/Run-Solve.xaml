@@ -24,7 +24,8 @@
             </Grid.ColumnDefinitions>
             <ListView x:Name="InputList" Grid.Column="0" FontSize="16"/>
             <ListView x:Name="OutputList" Grid.Column="1" FontSize="16"/>
-            
+            <TextBlock x:Name="ansDisplay" Grid.Column="1" Text="ANS:" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0,0,100,0"/>
+
 
 
         </Grid>

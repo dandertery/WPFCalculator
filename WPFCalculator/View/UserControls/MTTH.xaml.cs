@@ -10,32 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
-
 
 namespace WPFCalculator.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for Graphing.xaml
+    /// Interaction logic for MTTH.xaml
     /// </summary>
-    public partial class Graphing : UserControl
+    public partial class MTTH : Window
     {
-        public Graphing()
+        public MTTH()
         {
             InitializeComponent();
         }
-
-
-        public ISeries[] Series { get; set; } = new ISeries[]
-        {
-                new LineSeries<double>
-                {
-                    Values = new double[] { 2, 1, 3, 5, 3, 4, 6 },
-                    Fill = null
-                }
-        };
     }
 }

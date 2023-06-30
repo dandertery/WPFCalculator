@@ -18,12 +18,12 @@ namespace WPFCalculator.View.UserControls
     
     public partial class Run_Solve : UserControl
     {
-        private double ans = 0;
+        
 
 
         private Variable E = new Variable();
         private Variable PI = new Variable();
-        //private Variable ANS = new Variable();
+        private Variable ANS = new Variable();
         private string[] functionArray = { "cos", "sin", "log", "ln", "abs" }; //to determine nature of parsed function tokens
         private string[] operationArray = { "^", "*", "/", "-", "+" }; // to determine nature of parsed operation tokens
         struct Variable
@@ -34,6 +34,8 @@ namespace WPFCalculator.View.UserControls
         public Run_Solve()
         {
             InitializeComponent();
+            InitialiseVariables();
+            ansDisplay.Text = ANS.value.ToString();
         }
         private void InitialiseVariables() //Initialising variables for use in function/matrix definition
         {
@@ -41,6 +43,8 @@ namespace WPFCalculator.View.UserControls
             E.value = Math.E;
             PI.letter = "π";
             PI.value = Math.PI;
+            ANS.letter = "A";
+            ANS.value = 0;
             
         }
         private void ClearableTextBox_RaiseUserInput(string inputParameter)
@@ -53,6 +57,7 @@ namespace WPFCalculator.View.UserControls
             
             string userInput = inputParameter;
             InputList.Items.Add(userInput);
+            InputList.Items.Add("");
             OutputList.Items.Add("");
             try
             {
@@ -60,11 +65,13 @@ namespace WPFCalculator.View.UserControls
                 List<Variable> variableArray = new List<Variable>();
                 variableArray.Add(E);
                 variableArray.Add(PI);
+                variableArray.Add(ANS);
                 Parsing InputParsed = new Parsing(userInput);
                 TreeNode abstractSyntaxTree = FindRoot(InputParsed.GetTree());
                 double value = ProcessTree(abstractSyntaxTree, variableArray);
-                ans = value;
-                OutputList.Items.Add(ans);
+                ANS.value = value;
+                ansDisplay.Text = ANS.value.ToString();
+                OutputList.Items.Add(ANS.value);
             }
             catch (Exception ex)
             {
@@ -87,8 +94,6 @@ namespace WPFCalculator.View.UserControls
                 {
                     return output;
                 }
-
-
             }
             else
             {

@@ -23,7 +23,7 @@ namespace WPFCalculator
         public Parsing(string userInput)
         {
             pInput = userInput;
-            Token[] tokenArray = RemoveBrackets(BracketDepth(ImplicitNegative(ImplicitMultiplication(Lexer(pInput)))));
+            Token[] tokenArray = RemoveBrackets(BracketDepth(ImplicitNegative(ImplicitMultiplication(Lexer(ConvertAnsToA(pInput))))));
             if (ContainsFunction(tokenArray)) //Only looks to fix nested functions if it has a function
             {
                 tokenArray = FunctionFix(tokenArray);
@@ -31,7 +31,43 @@ namespace WPFCalculator
             Tree = Parser(tokenArray);
 
         }
+        private List<char> ArrayToList(string input)
+        {
+            List<char> output = new List<char>();
+            for (int i = 0; i < input.Length; i++)
+            {
+                output.Add(input[i]);
+            }
+            return output;
+        }
+        private string ListToArray(List<char> input)
+        {
+            string output = string.Empty;
+            for (int i = 0; i < input.Count; i++)
+            {
+                output = output + input[i];
+            }
+            return output;
+        }
+        private string ConvertAnsToA(string input)
+        {
+            List<char> charList = ArrayToList(input);
 
+            for (int i = 0; i < charList.Count - 2; i++)
+            {
+                if (charList[i] == 'A' && charList[i + 1] == 'N' && charList[i + 2] == 'S')
+                {
+                    charList.RemoveAt(i + 1);
+                    charList.RemoveAt(i + 1);
+                    i = 0;
+                }
+            }
+
+            return ListToArray(charList);
+
+
+
+        }
         public TreeNode GetTree()
         {
             return Tree[0];
@@ -170,7 +206,7 @@ namespace WPFCalculator
                 else if (Char.IsLetter(input[i]))
                 {
 
-                    if (Char.IsUpper(input[i]) || input[i] == 'x' || input[i] == 'π' || input[i] == 'e') //treat as variable
+                    if (Char.IsUpper(input[i]) || input[i] == 'x' || input[i] == 'π' || input[i] == 'e' || input[i] == 'A') //treat as variable
                     {
                         if (stringtoken != null)
                         {

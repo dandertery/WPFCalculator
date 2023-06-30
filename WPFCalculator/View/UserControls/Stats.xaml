@@ -7,6 +7,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                
+            </Grid.RowDefinitions>
+            <Button x:Name="normalDistButton" Content="Normal Distribution" Grid.Row="0" FontSize="16"/>
+            <Button x:Name="binDistButton" Content="Binomial Distribution" Grid.Row="1" FontSize="16"/>
+            <Button x:Name="poissonDistButton" Content="Poisson Distribution" Grid.Row="2" FontSize="16"/>
+            <Button x:Name="tDistButton" Content="T Distribution" Grid.Row="3" FontSize="16"/>
+            <Button x:Name="mtthDistButton" Content="MTTH Distribution" Grid.Row="4" FontSize="16"/>
+            <Button x:Name="chiDistButton" Content="Chi Sqrd Distribution" Grid.Row="5" FontSize="16"/>
+            <Button x:Name="chiTestButton" Content="Chi Test" Grid.Row="6" FontSize="16"/>
+            <Button x:Name="sampleAnalysisButton" Content="Sample Analysis" Grid.Row="7" FontSize="16"/>
             
+        </Grid>
     </Grid>
 </UserControl>
