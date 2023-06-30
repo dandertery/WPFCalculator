@@ -20,10 +20,17 @@
         
         
         <!-- Menu Bar -->
-        <userControls:MenuBar/>
+        <userControls:MenuBar x:Name="menuBar" RaiseUserControlShown="menuBar_RaiseUserControlShown"/>
         <!-- Content Pane -->
       
         <Grid Name ="ContentGrid" Grid.Row="1">
+            <userControls:Run_Solve x:Name="RunSolveContent" Panel.ZIndex="1"/>
+            <userControls:Graphing x:Name="GraphingContent"/>
+            <userControls:Stats x:Name="StatsContent"/>
+            <userControls:Equation x:Name="EquationContent"/>
+            <userControls:Recursion x:Name="RecursionContent"/>
+            
+            
             
         </Grid>
              

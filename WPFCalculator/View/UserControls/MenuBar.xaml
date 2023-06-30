@@ -19,11 +19,11 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="RunSolveButton"  Grid.Column="0" Margin="5" Content="Run-Solve"/>
-            <Button Name="GraphingButton" Grid.Column="1" Margin="5" Content="Graphing"/>
-            <Button Name="StatsButton"  Grid.Column="2" Margin="5" Content="Statistics/Distribution"/>
-            <Button Name ="EquationButton"  Grid.Column="3" Margin="5" Content="Equation"/>
-            <Button Name ="RecursionButton"  Grid.Column="4" Margin="5" Content="Recursion"/>
+            <Button Name="RunSolveButton"  Grid.Column="0" Margin="5" Content="Run-Solve" Click="RunSolveButton_Click"/>
+            <Button Name="GraphingButton" Grid.Column="1" Margin="5" Content="Graphing" Click="GraphingButton_Click"/>
+            <Button Name="StatsButton"  Grid.Column="2" Margin="5" Content="Statistics/Distribution" Click="StatsButton_Click"/>
+            <Button Name ="EquationButton"  Grid.Column="3" Margin="5" Content="Equation" Click="EquationButton_Click"/>
+            <Button Name ="RecursionButton"  Grid.Column="4" Margin="5" Content="Recursion" Click="RecursionButton_Click"/>
         </Grid>
     </Grid>
 </UserControl>
