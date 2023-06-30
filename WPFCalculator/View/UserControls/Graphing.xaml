@@ -12,7 +12,7 @@
             <ColumnDefinition Width="35*"/>
             <ColumnDefinition Width="65*"/>
         </Grid.ColumnDefinitions>
-        <lvc:CartesianChart Series="{Binding Series}" Grid.Column="1"/>
+        <lvc:CartesianChart x:Name="cartChart" Series="{Binding Vals,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
     </Grid>
     
 </UserControl>
