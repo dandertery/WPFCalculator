@@ -23,8 +23,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <ListView x:Name="InputList" Grid.Column="0" FontSize="16"/>
-            <ListView x:Name="OutputList" Grid.Column="1" FontSize="16"/>
-            <TextBlock x:Name="ansDisplay" Grid.Column="1" Text="ANS:" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Margin="0,0,100,0"/>
+            <ListView x:Name="OutputList" Grid.Column="1" FontSize="16" HorizontalContentAlignment="Right" />
+            <TextBlock x:Name="ansDisplay" Grid.Column="1" Text="ANS:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="10,5,0,0"/>
 
 
 

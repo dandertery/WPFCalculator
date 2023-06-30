@@ -35,7 +35,7 @@ namespace WPFCalculator.View.UserControls
         {
             InitializeComponent();
             InitialiseVariables();
-            ansDisplay.Text = ANS.value.ToString();
+            ansDisplay.Text = "ANS: " + ANS.value.ToString();
         }
         private void InitialiseVariables() //Initialising variables for use in function/matrix definition
         {
@@ -70,7 +70,7 @@ namespace WPFCalculator.View.UserControls
                 TreeNode abstractSyntaxTree = FindRoot(InputParsed.GetTree());
                 double value = ProcessTree(abstractSyntaxTree, variableArray);
                 ANS.value = value;
-                ansDisplay.Text = ANS.value.ToString();
+                ansDisplay.Text = "ANS: " + ANS.value.ToString();
                 OutputList.Items.Add(ANS.value);
             }
             catch (Exception ex)

@@ -79,5 +79,9 @@ namespace WPFCalculator.View.UserControls
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private void ClearableTextBox_RaiseUserInput(string input)
+        {
+            functionListView.Items.Add("y = " + input);
+        }
     }
 }
