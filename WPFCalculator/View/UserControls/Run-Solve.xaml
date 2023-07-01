@@ -20,6 +20,7 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <ListView x:Name="InputList" Grid.Column="0" FontSize="16"/>
