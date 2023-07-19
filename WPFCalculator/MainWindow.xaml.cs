@@ -9,10 +9,11 @@ namespace WPFCalculator
         public MainWindow()
         {
             InitializeComponent();
-            KeyboardWindow keyboardWindow = new KeyboardWindow();
+            KeyboardWindow keyboardWindow = new KeyboardWindow(this);
             keyboardWindow.Show();
-            DBExample example = new DBExample();
-            example.Show();
+            
+                //DBExample example = new DBExample();
+            //example.Show();
             RunSolveContent.Visibility = Visibility.Hidden;
             RecursionContent.Visibility = Visibility.Hidden;
             GraphingContent.Visibility = Visibility.Hidden;
@@ -23,10 +24,20 @@ namespace WPFCalculator
 
 
 
+
         }
         private void RunSolvePress(object sender, System.EventArgs e)
         {
 
+        }
+
+        public void ProcessKey(string keyContent)
+        {
+            if(keyContent == "∫")
+            {
+                IntegrationWindow integrationWindow = new IntegrationWindow();
+                integrationWindow.Show();
+            }
         }
 
         private void menuBar_RaiseUserControlShown(string toBeShown)

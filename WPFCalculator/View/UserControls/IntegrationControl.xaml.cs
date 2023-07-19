@@ -10,26 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFCalculator
+namespace WPFCalculator.View.UserControls
 {
     /// <summary>
-    /// Interaction logic for KeyboardWindow.xaml
+    /// Interaction logic for IntegrationControl.xaml
     /// </summary>
-    public partial class KeyboardWindow : Window
+    /// 
+    public partial class IntegrationControl : UserControl
     {
-        private MainWindow parent;
-        public KeyboardWindow(MainWindow inputParent)
+        public IntegrationControl()
         {
-            parent = inputParent;
             InitializeComponent();
-        }
 
-
-        public void SendKey(string keyContent)
-        {
-            parent.ProcessKey(keyContent);
+            
         }
     }
 }

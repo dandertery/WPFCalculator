@@ -15,21 +15,13 @@ using System.Windows.Shapes;
 namespace WPFCalculator
 {
     /// <summary>
-    /// Interaction logic for KeyboardWindow.xaml
+    /// Interaction logic for IntegrationWindow.xaml
     /// </summary>
-    public partial class KeyboardWindow : Window
+    public partial class IntegrationWindow : Window
     {
-        private MainWindow parent;
-        public KeyboardWindow(MainWindow inputParent)
+        public IntegrationWindow()
         {
-            parent = inputParent;
             InitializeComponent();
-        }
-
-
-        public void SendKey(string keyContent)
-        {
-            parent.ProcessKey(keyContent);
         }
     }
 }

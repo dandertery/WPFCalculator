@@ -8,7 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\integralsign2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.802" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ModelClasses\" />
+    <Folder Include="Windows\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\integralsign2.jpg" />
   </ItemGroup>
 
 </Project>

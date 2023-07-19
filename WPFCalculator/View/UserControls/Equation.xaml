@@ -7,6 +7,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="80*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                <Button x:Name="quadraticButton" Content="Solve Quadratic" Grid.Row="0" FontSize="16"/>
+                <Button x:Name="cubicButton" Content="Solve Cubic" Grid.Row="1" FontSize="16"/>
+                <Button x:Name="quarticButton" Content="Solve Quartic" Grid.Row="2" FontSize="16"/>
+
+
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

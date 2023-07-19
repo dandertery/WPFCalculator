@@ -43,7 +43,7 @@
         <userControls:Key Grid.Row="2" Grid.Column="0" Placeholder="4"/>
         <userControls:Key Grid.Row="2" Grid.Column="1" Placeholder="5"/>
         <userControls:Key Grid.Row="2" Grid.Column="2" Placeholder="6"/>
-        <userControls:Key Grid.Row="2" Grid.Column="3" Placeholder="1"/>
+        <userControls:Key Grid.Row="2" Grid.Column="3" Placeholder="∫"/>
         <userControls:Key Grid.Row="2" Grid.Column="4" Placeholder="1"/>
         <userControls:Key Grid.Row="2" Grid.Column="5" Placeholder="1"/>
         <userControls:Key Grid.Row="2" Grid.Column="6" Placeholder="1"/>

@@ -16,6 +16,7 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 
 namespace WPFCalculator.View.UserControls
@@ -25,36 +26,32 @@ namespace WPFCalculator.View.UserControls
     /// </summary>
     public partial class Graphing : UserControl, INotifyPropertyChanged
     {
-        
+        double[] coordinates = { };
         public Graphing()
         {
             DataContext = this;
+            functions = new ObservableCollection<string>();
+
             InitializeComponent();
             cartChart.TooltipFindingStrategy = LiveChartsCore.Measure.TooltipFindingStrategy.CompareAllTakeClosest;
             cartChart.TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Bottom;
             cartChart.EasingFunction = null;
+            
+
         }
         private ISeries[] vals { get; set; } = new ISeries[]
         {
 
-    
+
                 new LineSeries<double>
                 {
-                    Values = new double[] { 2, 1, 3, 5, 3, 4, 6 },
-                    Fill = null,  
+                    Values = new double[] {3,5,7 },
+                    Fill = null,
                     GeometrySize = 0,
                     //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
 
                 },
 
-                new LineSeries<double>
-                {
-                    Values = new double[] { 2, 1, 3, 5, 3, 4, 6 },
-                    Fill = null,
-                    GeometrySize = 0,
-                    //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
-
-                }
         };
 
 
@@ -81,7 +78,27 @@ namespace WPFCalculator.View.UserControls
 
         private void ClearableTextBox_RaiseUserInput(string input)
         {
-            functionListView.Items.Add("y = " + input);
+            functions.Add("y = " + input);
+            coordinates = new double[] { 1, 2, 3, 4, 5 };
         }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            Functions.Clear();
+        }
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            string selectedItem = (string)functionListView.SelectedItem;
+            functions.Remove(selectedItem);
+        }
+
+        private ObservableCollection<string> functions;
+
+        public ObservableCollection<string> Functions
+        {
+            get { return functions; }
+            set { functions = value; }
+        }
+
     }
 }
