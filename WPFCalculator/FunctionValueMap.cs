@@ -3,11 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+using LiveChartsCore.Defaults;
+using SkiaSharp.Views;
+using System.Collections;
+using System.Data;
+using System.Drawing;
+using System.Diagnostics;
+using System.Runtime;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.Painting.Effects;
+using SkiaSharp;
+using Microsoft.Win32;
 
 namespace WPFCalculator
 {
     internal class FunctionValueMap
     {
+        private TreeNode AST;
+        ObservablePoint[] functionMap;
+        public FunctionValueMap(TreeNode abstractSyntaxTree)
+        {
+            AST = abstractSyntaxTree;
+        }
 
+        public ObservablePoint[] GetObservablePointArray()
+        {
+            return functionMap;
+        }
     }
 }

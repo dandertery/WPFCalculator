@@ -31,6 +31,7 @@ namespace WPFCalculator
             Tree = Parser(tokenArray);
 
         }
+
         private List<char> ArrayToList(string input)
         {
             List<char> output = new List<char>();

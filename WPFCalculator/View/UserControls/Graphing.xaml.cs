@@ -36,8 +36,30 @@ namespace WPFCalculator.View.UserControls
     {
         ObservablePoint[] functionsConcatenated;
         double xMin; double xMax;
-
+        string preface = "y = ";
         double yMin; double yMax;
+        List<Function> functionList = new List<Function>();
+
+        struct Function
+        {
+            string function;
+            TreeNode abstractSyntaxTree;
+            ObservablePoint[] points;
+
+
+            public void GenerateFunction(string input)
+            {
+                function = input;
+                Parsing functionParse = new Parsing(function);
+                abstractSyntaxTree = functionParse.GetTree();
+
+                FunctionValueMap coordinateMap = new FunctionValueMap(abstractSyntaxTree);
+                points = coordinateMap.GetObservablePointArray();
+                
+            }
+            
+            
+        }
         public Graphing()
         {
 
@@ -59,8 +81,30 @@ namespace WPFCalculator.View.UserControls
             cartChart.TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Bottom;
             cartChart.EasingFunction = null;
 
+            GenerateGraph();
+
+
+        }
+
+        private void CompileFunctions()
+        {
+
+        }
+
+
+        private void GenerateGraph()
+        {
             vals = new ISeries[] //initialise
             {
+                new LineSeries<ObservablePoint> // range
+                {
+                    Values = functionsConcatenated,
+                    Fill = null,
+                    GeometrySize = 0,
+                    Stroke = null
+
+
+                },
                 new LineSeries<ObservablePoint> // range
                 {
                     Values = new ObservablePoint[2] {new ObservablePoint(xMin,yMin), new ObservablePoint(xMax,yMax)},
@@ -77,7 +121,7 @@ namespace WPFCalculator.View.UserControls
                     Stroke = new SolidColorPaint(SKColors.Black) { StrokeThickness = 3 },
                     Fill = null,
                     GeometrySize = 0,
-                    
+
 
 
                 },
@@ -87,23 +131,15 @@ namespace WPFCalculator.View.UserControls
                     Stroke = new SolidColorPaint(SKColors.Black) { StrokeThickness = 3 },
                     Fill = null,
                     GeometrySize = 0,
-                    
-                    
+
+
 
 
                 },
 
 
-            };
+}           ;
             OnPropertyChanged("Vals");
-
-
-        }
-
-
-        private void GenerateGraph()
-        {
-
         }
         private ISeries[] vals { get; set; } = new ISeries[]
         {
@@ -128,6 +164,21 @@ namespace WPFCalculator.View.UserControls
         };
 
 
+        private void AddFunctionToList(string input)
+        {
+            string functionExpression = input;
+            Function functionToAdd = new Function();
+            
+        }
+        private void RemoveFunctionFromList()
+        {
+
+        }
+        private void ClearFunctionList()
+        {
+            functionList.Clear();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         public ISeries[] Vals
         {
@@ -151,13 +202,17 @@ namespace WPFCalculator.View.UserControls
 
         private void ClearableTextBox_RaiseUserInput(string input)
         {
-            functions.Add("y = " + input);
-            coordinates = new double[] { 1, 2, 3, 4, 5 };
+            functions.Add(preface + input);
+            AddFunctionToList(input);
+            
+
+
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             Functions.Clear();
+            ClearFunctionList();
         }
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {

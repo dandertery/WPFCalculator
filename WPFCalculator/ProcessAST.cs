@@ -59,27 +59,6 @@ namespace WPFCalculator
                 return 18401840184018401840;
             }
         }
-        private TreeNode FindRoot(TreeNode input) //Finding root of tree produced by Parser. Prevents a possible erroneous output from Parsing
-        {
-            TreeNode output = input;
-            if (input.leftChild == null && input.rightChild == null)
-            {
-                if (input.token.tree != null)
-                {
-                    output = FindRoot(input.token.tree[0]);
-                    return output;
-                }
-                else
-                {
-                    return output;
-                }
-            }
-            else
-            {
-
-                return output;
-            }
-        }
         private double ProcessTree(TreeNode inputTree, List<Variable> varinputs) //recursive, top down
         {
 
