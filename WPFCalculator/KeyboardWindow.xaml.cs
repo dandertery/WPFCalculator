@@ -31,5 +31,10 @@ namespace WPFCalculator
         {
             parent.ProcessKey(keyContent);
         }
+
+        private void Key_RaisePress(string obj)
+        {
+            SendKey(obj);
+        }
     }
 }

@@ -19,15 +19,10 @@ namespace WPFCalculator.View.UserControls
     public partial class Key : UserControl
     {
         private string keyString;
-
-        private KeyboardWindow keyboardParent;
+        public event Action<string> RaisePress;
         public Key()
         {
-            
-            keyboardParent = (KeyboardWindow)Window.GetWindow(this);
-            InitializeComponent();
-            
-            
+            InitializeComponent();          
         }
         private string placeholder;
 
@@ -43,10 +38,12 @@ namespace WPFCalculator.View.UserControls
 
         }
 
+        
+
 
         private void buttonLocal_Click(object sender, RoutedEventArgs e)
         {
-            keyboardParent.SendKey(keyString);
+            RaisePress(keyString);
         }
     }
 }
