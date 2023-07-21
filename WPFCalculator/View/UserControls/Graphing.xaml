@@ -7,19 +7,19 @@
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid> <!-- main grid -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="49.5*"/>
             <ColumnDefinition Width ="1*"/>
             <ColumnDefinition Width="49.5*"/>
             
         </Grid.ColumnDefinitions>
-        <lvc:CartesianChart x:Name="cartChart" Series="{Binding Vals,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"/>
+        
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0"> <!-- left grid -->
             <local:ClearableTextBox Grid.Column="0" VerticalAlignment="Top" Panel.ZIndex ="1" RaiseUserInput="ClearableTextBox_RaiseUserInput"/>
             <ListView x:Name="functionListView" Grid.Row="1" FontSize="16" FontWeight="Light" ItemsSource="{Binding Functions}"/>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2"> <!-- left buttons -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -36,6 +36,33 @@
 
             
         </Grid>
+        <Grid Grid.Column="2"> <!-- right grid -->
+            
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="2"> <!-- range grid -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel  x:Name="xStackPanel" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="0">
+                    <TextBox x:Name="xLowerTbx" Width="auto" MinWidth="40" FontSize="20" TextAlignment="Center" TextChanged="xLowerTbx_TextChanged"/>
+                    <TextBlock Text="&lt; x &lt;" VerticalAlignment="Bottom"  FontSize="30"/>
+                    <TextBox x:Name="xUpperTbx" Width="auto" MinWidth="40" FontSize="20" TextAlignment="Center" TextChanged="xUpperTbx_TextChanged"/>
+                </StackPanel>
+                <StackPanel x:Name="yStackPanel" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+                    <TextBox x:Name="yLowerTbx" Width="auto" MinWidth="40" FontSize="20" TextAlignment="Center" TextChanged="yLowerTbx_TextChanged"/>
+                    <TextBlock Text="&lt; y &lt;" VerticalAlignment="Bottom" FontSize="30"/>
+                    <TextBox x:Name="yUpperTbx" Width="auto" MinWidth="40" FontSize="20" TextAlignment="Center" TextChanged="yUpperTbx_TextChanged"/>
+                </StackPanel>
+                
+            </Grid>
+            <lvc:CartesianChart x:Name="cartChart" Series="{Binding Vals,UpdateSourceTrigger=PropertyChanged}" Grid.Row="0"/>
+            
+        </Grid>
+        
     </Grid>
 
     
