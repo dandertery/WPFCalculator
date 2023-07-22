@@ -48,7 +48,7 @@ namespace WPFCalculator.View.UserControls
             {
                 Parsing InputParsed = new Parsing(userInput);
                 TreeNode abstractSyntaxTree = FindRoot(InputParsed.GetTree());
-                ProcessAST processAST = new ProcessAST(abstractSyntaxTree, ANS.value);
+                ProcessAST processAST = new ProcessAST(abstractSyntaxTree, ANS.value, 0); //check for errors
 
                 double value = processAST.GetResult();
                 ANS.value = value;

@@ -47,15 +47,25 @@ namespace WPFCalculator.View.UserControls
             ObservablePoint[] points;
 
 
-            public void GenerateFunction(string input)
+            public void GenerateFunction(string input, double xMinLocal, double xMaxLocal, double yMinLocal, double yMaxLocal)
             {
                 function = input;
                 Parsing functionParse = new Parsing(function);
                 abstractSyntaxTree = functionParse.GetTree();
 
-                FunctionValueMap coordinateMap = new FunctionValueMap(abstractSyntaxTree);
+                FunctionValueMap coordinateMap = new FunctionValueMap(abstractSyntaxTree, xMinLocal, xMaxLocal, yMinLocal, yMaxLocal);
                 points = coordinateMap.GetObservablePointArray();
                 
+            }
+
+            public ObservablePoint[] GetPoints()
+            {
+
+                return points;
+            }
+            public string GetFunctionName()
+            {
+                return function;
             }
             
             
@@ -88,12 +98,35 @@ namespace WPFCalculator.View.UserControls
 
         private void CompileFunctions()
         {
-
+            List<ObservablePoint> pointsList = new List<ObservablePoint>();
+            if(functionList.Count > 0)
+            {
+                
+                for (int i = 0; i < functionList.Count; i++)
+                {
+                    for (int z = 0; z < functionList[i].GetPoints().Length; z++)
+                    {
+                        pointsList.Add(functionList[i].GetPoints()[z]);
+                    }
+                    pointsList.Add(null);
+                    
+                }
+            }
+            else
+            {
+                functionsConcatenated = new ObservablePoint[0];
+            }
+            functionsConcatenated = new ObservablePoint[pointsList.Count];
+            for (int i = 0; i < pointsList.Count; i++)
+            {
+                functionsConcatenated[i] = pointsList[i];
+            }
         }
 
 
         private void GenerateGraph()
         {
+            CompileFunctions();
             vals = new ISeries[] //initialise
             {
                 new LineSeries<ObservablePoint> // range
@@ -101,7 +134,7 @@ namespace WPFCalculator.View.UserControls
                     Values = functionsConcatenated,
                     Fill = null,
                     GeometrySize = 0,
-                    Stroke = null
+                    Stroke = new SolidColorPaint(SKColors.Blue) { StrokeThickness = 4 },
 
 
                 },
@@ -168,15 +201,25 @@ namespace WPFCalculator.View.UserControls
         {
             string functionExpression = input;
             Function functionToAdd = new Function();
-            
+            functionToAdd.GenerateFunction(functionExpression, xMin, xMax, yMin, yMax);
+            functionList.Add(functionToAdd);
+            GenerateGraph();
         }
-        private void RemoveFunctionFromList()
+        private void RemoveFunctionFromList(string selectedItem)
         {
-
+            for (int i = 0; i < functionList.Count; i++)
+            {
+                if(functionList[i].GetFunctionName() == selectedItem)
+                {
+                    functionList.RemoveAt(i);
+                }
+            }
+            GenerateGraph();
         }
         private void ClearFunctionList()
         {
             functionList.Clear();
+            GenerateGraph();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -217,6 +260,7 @@ namespace WPFCalculator.View.UserControls
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             string selectedItem = (string)functionListView.SelectedItem;
+            RemoveFunctionFromList(selectedItem);
             functions.Remove(selectedItem);
         }
 
@@ -228,6 +272,15 @@ namespace WPFCalculator.View.UserControls
             set { functions = value; }
         }
 
+        private void OnRangeChange()
+        {
+            for (int i = 0; i < functionList.Count; i++)
+            {
+                functionList[i].GenerateFunction(functionList[i].GetFunctionName(), xMin, xMax, yMin, yMax);
+            }
+            GenerateGraph();
+        }
+
         private void xLowerTbx_TextChanged(object sender, TextChangedEventArgs e) //issue with xmax small xmax big?
         {
             try
@@ -237,6 +290,7 @@ namespace WPFCalculator.View.UserControls
                 if(temp < xMax)
                 {
                     xMin = temp;
+                    OnRangeChange();
                 }
             }
             catch (Exception)
@@ -244,6 +298,7 @@ namespace WPFCalculator.View.UserControls
 
                 
             }
+            
         }
 
         private void xUpperTbx_TextChanged(object sender, TextChangedEventArgs e)
@@ -255,6 +310,7 @@ namespace WPFCalculator.View.UserControls
                 if (temp > xMin)
                 {
                     xMax = temp;
+                    OnRangeChange();
                 }
             }
             catch (Exception)
@@ -262,6 +318,7 @@ namespace WPFCalculator.View.UserControls
 
 
             }
+
         }
 
         private void yLowerTbx_TextChanged(object sender, TextChangedEventArgs e)
@@ -273,6 +330,7 @@ namespace WPFCalculator.View.UserControls
                 if (temp < yMax)
                 {
                     yMin = temp;
+                    OnRangeChange();
                 }
             }
             catch (Exception)
@@ -291,6 +349,7 @@ namespace WPFCalculator.View.UserControls
                 if (temp > yMin)
                 {
                     yMax = temp;
+                    OnRangeChange();
                 }
             }
             catch (Exception)

@@ -11,6 +11,7 @@ namespace WPFCalculator
         private Variable E = new Variable();
         private Variable PI = new Variable();
         private Variable ANS = new Variable();
+        private Variable X = new Variable();
         private TreeNode AST;
         private string[] functionArray = { "cos", "sin", "log", "ln", "abs" }; //to determine nature of parsed function tokens
         private string[] operationArray = { "^", "*", "/", "-", "+" }; // to determine nature of parsed operation tokens
@@ -27,15 +28,18 @@ namespace WPFCalculator
             PI.value = Math.PI;
             ANS.letter = "A";
             ANS.value = 0;
+            X.letter = "x";
+            X.value = 0;
 
         }
 
         private double result = -1;
-        public  ProcessAST(TreeNode abstractSyntaxTree, double ansValue)
+        public  ProcessAST(TreeNode abstractSyntaxTree, double ansValue, double xValue)
         {
             AST = abstractSyntaxTree;
             InitialiseVariables();
             ANS.value = ansValue;
+            X.value = xValue;
             result = Process();
         }
         public double GetResult()
@@ -51,6 +55,7 @@ namespace WPFCalculator
                 variableArray.Add(E);
                 variableArray.Add(PI);
                 variableArray.Add(ANS);
+                variableArray.Add(X);
                 return ProcessTree(AST, variableArray);
             }
             catch (Exception)
