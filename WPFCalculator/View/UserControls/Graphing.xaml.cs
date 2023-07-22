@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveChartsCore;
+using LiveChartsCore.Drawing;
 using LiveChartsCore.SkiaSharpView;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -28,6 +29,7 @@ using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView.Painting.Effects;
 using SkiaSharp;
 using Microsoft.Win32;
+using System.Drawing;
 
 namespace WPFCalculator.View.UserControls
 {
@@ -79,7 +81,7 @@ namespace WPFCalculator.View.UserControls
             functions = new ObservableCollection<string>();
 
             InitializeComponent();
-            double rangeDefault = 100; //edit this
+            double rangeDefault = 10; //edit this
             xMin = rangeDefault * -1; yMin = rangeDefault * -1;
             xMax = rangeDefault; yMax = rangeDefault;
             xLowerTbx.Text = xMin.ToString();
@@ -98,10 +100,11 @@ namespace WPFCalculator.View.UserControls
 
         private void CompileFunctions()
         {
-            List<ObservablePoint> pointsList = new List<ObservablePoint>();
+            functionsConcatenated = new ObservablePoint[0];   
             if(functionList.Count > 0)
             {
-                
+                List<ObservablePoint> pointsList = new List<ObservablePoint>();
+
                 for (int i = 0; i < functionList.Count; i++)
                 {
                     for (int z = 0; z < functionList[i].GetPoints().Length; z++)
@@ -111,16 +114,13 @@ namespace WPFCalculator.View.UserControls
                     pointsList.Add(null);
                     
                 }
+                functionsConcatenated = new ObservablePoint[pointsList.Count];
+                for (int i = 0; i < pointsList.Count; i++)
+                {
+                    functionsConcatenated[i] = pointsList[i];
+                }
             }
-            else
-            {
-                functionsConcatenated = new ObservablePoint[0];
-            }
-            functionsConcatenated = new ObservablePoint[pointsList.Count];
-            for (int i = 0; i < pointsList.Count; i++)
-            {
-                functionsConcatenated[i] = pointsList[i];
-            }
+
         }
 
 
@@ -131,15 +131,18 @@ namespace WPFCalculator.View.UserControls
             {
                 new LineSeries<ObservablePoint> // range
                 {
+                    LineSmoothness = 0,
+                    DataPadding = new LvcPoint(0,0),
                     Values = functionsConcatenated,
                     Fill = null,
                     GeometrySize = 0,
                     Stroke = new SolidColorPaint(SKColors.Blue) { StrokeThickness = 4 },
-
+                    //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
 
                 },
                 new LineSeries<ObservablePoint> // range
                 {
+                    DataPadding = new LvcPoint(0,0),
                     Values = new ObservablePoint[2] {new ObservablePoint(xMin,yMin), new ObservablePoint(xMax,yMax)},
                     Fill = null,
                     GeometrySize = 0,
@@ -150,6 +153,7 @@ namespace WPFCalculator.View.UserControls
 
                 new LineSeries<ObservablePoint> // x Axis
                 {
+                    DataPadding = new LvcPoint(0,0),
                     Values = new ObservablePoint[2] {new ObservablePoint(xMin,0), new ObservablePoint(xMax,0)},
                     Stroke = new SolidColorPaint(SKColors.Black) { StrokeThickness = 3 },
                     Fill = null,
@@ -160,12 +164,13 @@ namespace WPFCalculator.View.UserControls
                 },
                 new LineSeries<ObservablePoint> // y Axis
                 {
+                    DataPadding = new LvcPoint(0,0),
                     Values = new ObservablePoint[2] {new ObservablePoint(0,yMin), new ObservablePoint(0,yMax)},
                     Stroke = new SolidColorPaint(SKColors.Black) { StrokeThickness = 3 },
                     Fill = null,
                     GeometrySize = 0,
 
-
+                    //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
 
 
                 },
@@ -177,22 +182,6 @@ namespace WPFCalculator.View.UserControls
         private ISeries[] vals { get; set; } = new ISeries[]
         {
 
-                new LineSeries<ObservablePoint> //GET RID OF THESE?
-                {
-                    Values = new ObservablePoint[0],
-                    Fill = null,
-                    GeometrySize = 0,
-                    //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
-
-                },
-                new LineSeries<ObservablePoint> // define range
-                {
-                    Values = new ObservablePoint[0],
-                    Fill = null,
-                    GeometrySize = 0,
-                    //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
-
-                },
 
         };
 
@@ -209,7 +198,7 @@ namespace WPFCalculator.View.UserControls
         {
             for (int i = 0; i < functionList.Count; i++)
             {
-                if(functionList[i].GetFunctionName() == selectedItem)
+                if((preface + functionList[i].GetFunctionName()) == selectedItem)
                 {
                     functionList.RemoveAt(i);
                 }
@@ -276,7 +265,9 @@ namespace WPFCalculator.View.UserControls
         {
             for (int i = 0; i < functionList.Count; i++)
             {
-                functionList[i].GenerateFunction(functionList[i].GetFunctionName(), xMin, xMax, yMin, yMax);
+                Function tempFunction = new Function();
+                tempFunction.GenerateFunction(functionList[i].GetFunctionName(), xMin, xMax, yMin, yMax);
+                functionList[i] = tempFunction;
             }
             GenerateGraph();
         }
