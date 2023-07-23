@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:WPFCalculator.View.UserControls"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid> <!-- main grid -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="49.5*"/>
-            <ColumnDefinition Width ="1*"/>
-            <ColumnDefinition Width="49.5*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width ="0.4*"/>
+            <ColumnDefinition Width="50*"/>
             
         </Grid.ColumnDefinitions>
         

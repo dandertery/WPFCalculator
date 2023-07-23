@@ -43,7 +43,7 @@ namespace WPFCalculator
 
 
             double x = xMin;
-            int resolution = 1000; //coordinates
+            int resolution = 5000; //coordinates
             functionMap = new ObservablePoint[resolution];
             double pitch = (xMax - xMin) / resolution;
 

@@ -38,7 +38,7 @@ namespace WPFCalculator
         double solution;
         public IntegralSolver(string inputExpression, string lowerLimit, string upperLimit)
         {
-            int resolution = 500000000;
+            int resolution = 50000;
             resolution = resolution * 2; // must be even 
 
             expression = inputExpression;
