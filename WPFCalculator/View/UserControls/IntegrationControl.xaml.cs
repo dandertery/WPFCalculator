@@ -27,5 +27,15 @@ namespace WPFCalculator.View.UserControls
 
             
         }
+
+        private void generateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string upperLimit = upperLimitTB.Text;
+            string lowerLimit = lowerLimitTB.Text;
+            string expression = functionTB.Text;
+            IntegralSolver integralSolver = new IntegralSolver(expression, lowerLimit, upperLimit);
+            double result = integralSolver.GetSolution();
+            resultTB.Text = result.ToString();
+        }
     }
 }

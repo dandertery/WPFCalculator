@@ -14,15 +14,16 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="150" />
             <ColumnDefinition Width="50*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Image Source="\WPFCalculator;component\Images\integralsign2.jpg"  Grid.Row="1" />
-        <TextBox x:Name="upperLimitTB" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" FontSize="50" Margin="30, 30, 10, 0"/>
-        <TextBox x:Name="lowerLimitTB" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" FontSize="50" Margin="30, 0, 10, 30"/>
+        <TextBox x:Name="upperLimitTB" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" />
+        <TextBox x:Name="lowerLimitTB" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" />
         <TextBox x:Name="functionTB" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" FontSize="50" Margin="0, 10, 0, 10"/>
-
+        <Button x:Name="generateBtn" Content="Execute" Grid.Row="2" Grid.Column="1" Margin="20,20,20,20" Click="generateBtn_Click"/>
+        <TextBlock x:Name="resultTB" Text="" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
         <TextBlock Grid.Row="1" Grid.Column="2" Text="dx" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
     </Grid>
 </UserControl>
