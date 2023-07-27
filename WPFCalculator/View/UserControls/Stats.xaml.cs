@@ -23,6 +23,62 @@ namespace WPFCalculator.View.UserControls
         public Stats()
         {
             InitializeComponent();
+            Hide();
+        }
+        private void Hide()
+        {
+            distributionUC.Visibility = Visibility.Hidden;
+            piecewiseUC.Visibility = Visibility.Hidden;
+            chiTestUC.Visibility = Visibility.Hidden;
+            sampleAnalysisUC.Visibility = Visibility.Hidden;
+
+        }
+        private void normalDistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            distributionUC.Visibility = Visibility.Visible;
+        }
+
+        private void binDistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            distributionUC.Visibility = Visibility.Visible;
+        }
+
+        private void poissonDistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            distributionUC.Visibility = Visibility.Visible;
+        }
+
+        private void tDistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            distributionUC.Visibility = Visibility.Visible;
+        }
+
+        private void mtthDistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            distributionUC.Visibility = Visibility.Visible;
+        }
+
+        private void piecewiseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            piecewiseUC.Visibility = Visibility.Visible;
+        }
+
+        private void chiTestButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            chiTestUC.Visibility = Visibility.Visible;
+        }
+
+        private void sampleAnalysisButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            sampleAnalysisUC.Visibility = Visibility.Visible;
         }
     }
 }

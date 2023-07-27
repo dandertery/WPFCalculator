@@ -76,7 +76,44 @@ namespace WPFCalculator
                             break;
                         case "DEL":
                             break;
-                        case "template":
+                        case "OPTN":
+                            break;
+                        case "MAT":
+                            break;
+                        case "RESTART":
+                            break;
+                        case "DEG/RADIAN":
+                            break;
+                        case "i":
+                            break;
+                        case "sin":
+                            break;
+                        case "cos":
+                            break;
+                        case "ln":
+                            break;
+                        case "log(a,b)":
+                            break;
+                        case "e":
+                            break;
+                        case "π":
+                            break;
+                        case "^":
+                            break;
+                        case "*":
+                            break;
+                        case "+":
+                            break;
+                        case "/":
+                            break;
+                        case "-":
+                            break;
+                        case "TRIG/HYPERB":
+                            break;
+
+                        case "EXIT":
+                            break;
+                        case "S/D":
                             break;
                     }
                 }

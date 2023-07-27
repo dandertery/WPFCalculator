@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFCalculator.View.UserControls"
+             xmlns:userControls="clr-namespace:WPFCalculator.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="85*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -23,15 +24,20 @@
                 <RowDefinition/>
                 
             </Grid.RowDefinitions>
-            <Button x:Name="normalDistButton" Content="Normal Distribution" Grid.Row="0" FontSize="16"/>
-            <Button x:Name="binDistButton" Content="Binomial Distribution" Grid.Row="1" FontSize="16"/>
-            <Button x:Name="poissonDistButton" Content="Poisson Distribution" Grid.Row="2" FontSize="16"/>
-            <Button x:Name="tDistButton" Content="T Distribution" Grid.Row="3" FontSize="16"/>
-            <Button x:Name="mtthDistButton" Content="MTTH Distribution" Grid.Row="4" FontSize="16"/>
-            <Button x:Name="chiDistButton" Content="Chi Sqrd Distribution" Grid.Row="5" FontSize="16"/>
-            <Button x:Name="chiTestButton" Content="Chi Test" Grid.Row="6" FontSize="16"/>
-            <Button x:Name="sampleAnalysisButton" Content="Sample Analysis" Grid.Row="7" FontSize="16"/>
+            <Button x:Name="normalDistButton" Content="Normal Distribution" Grid.Row="0" FontSize="12" Click="normalDistButton_Click"/>
+            <Button x:Name="binDistButton" Content="Binomial Distribution" Grid.Row="1" FontSize="12" Click="binDistButton_Click"/>
+            <Button x:Name="poissonDistButton" Content="Poisson Distribution" Grid.Row="2" FontSize="12" Click="poissonDistButton_Click"/>
+            <Button x:Name="tDistButton" Content="T Distribution" Grid.Row="3" FontSize="12" Click="tDistButton_Click"/>
+            <Button x:Name="mtthDistButton" Content="MTTH Distribution" Grid.Row="4" FontSize="12" Click="mtthDistButton_Click"/>
+            <Button x:Name="piecewiseButton" Content="Piecewise Calculator" Grid.Row="5" FontSize="12" Click="piecewiseButton_Click"/>
+            <Button x:Name="chiTestButton" Content="Chi Test" Grid.Row="6" FontSize="12" Click="chiTestButton_Click"/>
+            <Button x:Name="sampleAnalysisButton" Content="Sample Analysis" Grid.Row="7" FontSize="12" Click="sampleAnalysisButton_Click"/>
+
             
         </Grid>
+        <userControls:__Distribution x:Name="distributionUC" Grid.Column="1"/>
+        <userControls:Piecewise x:Name="piecewiseUC" Grid.Column="1"/>
+        <userControls:ChiTest x:Name="chiTestUC" Grid.Column="1"/>
+        <userControls:SampleAnalysis x:Name="sampleAnalysisUC" Grid.Column="1"/>
     </Grid>
 </UserControl>

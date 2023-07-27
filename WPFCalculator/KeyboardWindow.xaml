@@ -26,41 +26,41 @@
             <RowDefinition/>
 
         </Grid.RowDefinitions>
-        <userControls:Key Grid.Row="0" Grid.Column="0" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="0" Grid.Column="1" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="0" Grid.Column="2" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="0" Grid.Column="3" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="0" Grid.Column="4" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="0" Grid.Column="5" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="0" Grid.Column="6" Placeholder="1" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="0" Grid.Column="0" Placeholder="OPTN" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="0" Grid.Column="1" Placeholder="MAT" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="0" Grid.Column="2" Placeholder="RESTART" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="0" Grid.Column="3" Placeholder="DEG/RADIAN" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="0" Grid.Column="4" Placeholder="i" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="0" Grid.Column="5" Placeholder="sin" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="0" Grid.Column="6" Placeholder="cos" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="1" Grid.Column="0" Placeholder="7" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="1" Grid.Column="1" Placeholder="8" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="1" Grid.Column="2" Placeholder="9" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="1" Grid.Column="3" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="1" Grid.Column="4" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="1" Grid.Column="5" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="1" Grid.Column="6" Placeholder="1" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="1" Grid.Column="3" Placeholder="S/D" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="1" Grid.Column="4" Placeholder="TRIG/HYPERB" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="1" Grid.Column="5" Placeholder="ln" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="1" Grid.Column="6" Placeholder="log(a,b)" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="2" Grid.Column="0" Placeholder="4" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="2" Grid.Column="1" Placeholder="5" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="2" Grid.Column="2" Placeholder="6" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="2" Grid.Column="3" Placeholder="∫" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="2" Grid.Column="4" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="2" Grid.Column="5" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="2" Grid.Column="6" Placeholder="1" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="2" Grid.Column="4" Placeholder="DEL" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="2" Grid.Column="5" Placeholder="(" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="2" Grid.Column="6" Placeholder=")" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="3" Grid.Column="0" Placeholder="1" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="3" Grid.Column="1" Placeholder="2" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="3" Grid.Column="2" Placeholder="3" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="3" Grid.Column="3" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="3" Grid.Column="4" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="3" Grid.Column="5" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="3" Grid.Column="6" Placeholder="1" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="3" Grid.Column="3" Placeholder="*" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="3" Grid.Column="4" Placeholder="/" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="3" Grid.Column="5" Placeholder="e" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="3" Grid.Column="6" Placeholder="π" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="4" Grid.Column="0" Placeholder="0" RaisePress="Key_RaisePress"/>
         <userControls:Key Grid.Row="4" Grid.Column="1" Placeholder="." RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="4" Grid.Column="2" Placeholder=":)" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="4" Grid.Column="3" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="4" Grid.Column="4" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="4" Grid.Column="5" Placeholder="1" RaisePress="Key_RaisePress"/>
-        <userControls:Key Grid.Row="4" Grid.Column="6" Placeholder="1" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="4" Grid.Column="2" Placeholder="^" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="4" Grid.Column="3" Placeholder="+" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="4" Grid.Column="4" Placeholder="-" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="4" Grid.Column="5" Placeholder="ANS" RaisePress="Key_RaisePress"/>
+        <userControls:Key Grid.Row="4" Grid.Column="6" Placeholder="EXIT" RaisePress="Key_RaisePress"/>
         
 
     </Grid>

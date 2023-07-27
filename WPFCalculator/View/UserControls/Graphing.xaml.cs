@@ -69,6 +69,8 @@ namespace WPFCalculator.View.UserControls
             {
                 return function;
             }
+
+            
             
             
         }
@@ -92,6 +94,8 @@ namespace WPFCalculator.View.UserControls
             cartChart.TooltipFindingStrategy = LiveChartsCore.Measure.TooltipFindingStrategy.CompareAllTakeClosest;
             cartChart.TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Bottom;
             cartChart.EasingFunction = null;
+
+            
 
             GenerateGraph();
 
@@ -127,6 +131,17 @@ namespace WPFCalculator.View.UserControls
         private void GenerateGraph()
         {
             CompileFunctions();
+            ObservablePoint[] xAxisPoints = new ObservablePoint[2] { new ObservablePoint(xMin, 0), new ObservablePoint(xMax, 0) };
+            ObservablePoint[] yAxisPoints = new ObservablePoint[2] { new ObservablePoint(0, yMin), new ObservablePoint(0, yMax) };
+            if (yMin > 0 || yMax < 0)
+            {
+                xAxisPoints = new ObservablePoint[0];
+            }
+            if(xMin > 0 || xMax < 0)
+            {
+                yAxisPoints = new ObservablePoint[0];
+            }
+
             vals = new ISeries[] //initialise
             {
                 new LineSeries<ObservablePoint> // range
@@ -154,7 +169,7 @@ namespace WPFCalculator.View.UserControls
                 new LineSeries<ObservablePoint> // x Axis
                 {
                     DataPadding = new LvcPoint(0,0),
-                    Values = new ObservablePoint[2] {new ObservablePoint(xMin,0), new ObservablePoint(xMax,0)},
+                    Values = xAxisPoints,
                     Stroke = new SolidColorPaint(SKColors.Black) { StrokeThickness = 3 },
                     Fill = null,
                     GeometrySize = 0,
@@ -165,7 +180,7 @@ namespace WPFCalculator.View.UserControls
                 new LineSeries<ObservablePoint> // y Axis
                 {
                     DataPadding = new LvcPoint(0,0),
-                    Values = new ObservablePoint[2] {new ObservablePoint(0,yMin), new ObservablePoint(0,yMax)},
+                    Values = yAxisPoints,
                     Stroke = new SolidColorPaint(SKColors.Black) { StrokeThickness = 3 },
                     Fill = null,
                     GeometrySize = 0,
