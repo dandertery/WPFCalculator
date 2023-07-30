@@ -34,7 +34,7 @@ namespace WPFCalculator.View.UserControls
             string lowerLimit = lowerLimitTB.Text;
             string expression = functionTB.Text;
             IntegralSolver integralSolver = new IntegralSolver(expression, lowerLimit, upperLimit);
-            double result = integralSolver.GetSolution();
+            decimal result = integralSolver.GetSolution();
             resultTB.Text = result.ToString();
         }
     }

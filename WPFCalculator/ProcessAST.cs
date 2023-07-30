@@ -18,14 +18,14 @@ namespace WPFCalculator
         struct Variable
         {
             public string letter;
-            public double value;
+            public decimal value;
         }
         private void InitialiseVariables() //Initialising variables for use in function/matrix definition
         {
             E.letter = "e";
-            E.value = Math.E;
+            E.value = (decimal)Math.E;
             PI.letter = "π";
-            PI.value = Math.PI;
+            PI.value = (decimal)Math.PI;
             ANS.letter = "A";
             ANS.value = 0;
             X.letter = "x";
@@ -33,8 +33,8 @@ namespace WPFCalculator
 
         }
 
-        private double result = -1;
-        public  ProcessAST(TreeNode abstractSyntaxTree, double ansValue, double xValue)
+        private decimal result = -1;
+        public  ProcessAST(TreeNode abstractSyntaxTree, decimal ansValue, decimal xValue)
         {
             AST = abstractSyntaxTree;
             InitialiseVariables();
@@ -42,12 +42,12 @@ namespace WPFCalculator
             X.value = xValue;
             result = Process();
         }
-        public double GetResult()
+        public decimal GetResult()
         {
             return result;
 
         }
-        private double Process()
+        private decimal Process()
         {
             try
             {
@@ -64,17 +64,17 @@ namespace WPFCalculator
                 return 18401840184018401840;
             }
         }
-        private double ProcessTree(TreeNode inputTree, List<Variable> varinputs) //recursive, top down
+        private decimal ProcessTree(TreeNode inputTree, List<Variable> varinputs) //recursive, top down
         {
 
-            double value;
+            decimal value;
 
             if (inputTree.leftChild == null && inputTree.rightChild == null) //indicating double value / variable
             {
 
-                if (Double.TryParse(inputTree.token.contents, out value))
+                if (decimal.TryParse(inputTree.token.contents, out value))
                 {
-                    return (double)value;
+                    return (decimal)value;
                 }
                 else
                 {
@@ -89,7 +89,7 @@ namespace WPFCalculator
             }
             else if (inputTree.leftChild == null) //indicating function
             {
-                double rightValue = ProcessTree(inputTree.rightChild, varinputs);
+                decimal rightValue = ProcessTree(inputTree.rightChild, varinputs);
                 int index = -1;
                 for (int i = 0; i < functionArray.Length; i++)
                 {
@@ -105,25 +105,25 @@ namespace WPFCalculator
                 switch (index)
                 {
                     case 0:
-                        return Math.Cos(rightValue);
+                        return (decimal)Math.Cos((double)rightValue);
 
                     case 1:
-                        return Math.Sin(rightValue);
+                        return (decimal)Math.Sin((double)rightValue);
 
                     case 2:
-                        return Math.Log10(rightValue);
+                        return (decimal)Math.Log10((double)rightValue);
 
                     case 3:
-                        return Math.Log(rightValue);
+                        return (decimal)Math.Log((double)rightValue);
                     case 4:
-                        return Math.Abs(rightValue);
+                        return (decimal)Math.Abs(rightValue);
 
                 }
             }
             else //indicating operation
             {
-                double leftValue = ProcessTree(inputTree.leftChild, varinputs);
-                double rightValue = ProcessTree(inputTree.rightChild, varinputs);
+                decimal leftValue = ProcessTree(inputTree.leftChild, varinputs);
+                decimal rightValue = ProcessTree(inputTree.rightChild, varinputs);
                 int index = -1;
                 for (int i = 0; i < operationArray.Length; i++)
                 {
@@ -136,7 +136,7 @@ namespace WPFCalculator
                 switch (index)
                 {
                     case 0:
-                        return Math.Pow(leftValue, rightValue);
+                        return (decimal)Math.Pow((double)leftValue, (double)rightValue);
 
                     case 1:
                         return leftValue * rightValue;

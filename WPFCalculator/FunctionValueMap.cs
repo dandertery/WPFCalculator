@@ -37,27 +37,27 @@ namespace WPFCalculator
         private TreeNode AST;
         ObservablePoint[] functionMap;
         
-        public FunctionValueMap(TreeNode abstractSyntaxTree, double xMin, double xMax, double yMin, double yMax)
+        public FunctionValueMap(TreeNode abstractSyntaxTree, decimal xMin, decimal xMax, decimal yMin, decimal yMax)
         {
             AST = abstractSyntaxTree;
 
 
-            double x = xMin;
+            decimal x = xMin;
             int resolution = 5000; //coordinates
             functionMap = new ObservablePoint[resolution];
-            double pitch = (xMax - xMin) / resolution;
+            decimal pitch = (xMax - xMin) / resolution;
 
             for (int i = 0; i < resolution; i++)
             {
                 ProcessAST process = new ProcessAST(AST, 0, x);
-                double y = process.GetResult();
+                decimal y = process.GetResult();
                 if(yMin > y || yMax < y)
                 {
                     
                 }
                 else
                 {
-                    functionMap[i] = new ObservablePoint(x, y);
+                    functionMap[i] = new ObservablePoint((double?)x, (double?)y);
                 }
                 x = x + pitch;
             }

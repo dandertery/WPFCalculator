@@ -22,7 +22,7 @@ namespace WPFCalculator.View.UserControls
         struct Variable
         {
             public string letter;
-            public double value;
+            public decimal value;
         }
         public Run_Solve()
         {
@@ -50,7 +50,7 @@ namespace WPFCalculator.View.UserControls
                 TreeNode abstractSyntaxTree = FindRoot(InputParsed.GetTree());
                 ProcessAST processAST = new ProcessAST(abstractSyntaxTree, ANS.value, 0); //check for errors
 
-                double value = processAST.GetResult();
+                decimal value = processAST.GetResult();
                 ANS.value = value;
                 ansDisplay.Text = "ANS: " + ANS.value.ToString();
                 OutputList.Items.Add(ANS.value);

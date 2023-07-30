@@ -35,15 +35,15 @@ namespace WPFCalculator
     {
         private TreeNode abstractSyntaxTree;
         private string expression;
-        double solution;
+        decimal solution;
         public IntegralSolver(string inputExpression, string lowerLimit, string upperLimit)
         {
-            int resolution = 50000;
+            int resolution = 500000;
             resolution = resolution * 2; // must be even 
 
             expression = inputExpression;
-            double a = double.Parse(lowerLimit);
-            double b = double.Parse(upperLimit);
+            decimal a = decimal.Parse(lowerLimit);
+            decimal b = decimal.Parse(upperLimit);
 
             Parsing parser = new Parsing(expression);
             abstractSyntaxTree = parser.GetTree();
@@ -51,22 +51,22 @@ namespace WPFCalculator
         }
 
 
-        private double Integrate(TreeNode AST, int n, double lower, double upper) // Simpson's rule
+        private decimal Integrate(TreeNode AST, int n, decimal lower, decimal upper) // Simpson's rule
         {
-            double h = (upper - lower) / n;
-            double x = lower;
-            double[] yPoints = new double[n];
+            decimal h = (upper - lower) / n;
+            decimal x = lower;
+            decimal[] yPoints = new decimal[n];
             for (int i = 0; i < n; i++)
             {
                 ProcessAST processAST = new ProcessAST(AST, 0, x);
-                double yTemp = processAST.GetResult();
+                decimal yTemp = processAST.GetResult();
                 yPoints[i] = yTemp;
                 x = x + h;
             }
 
-            double firstAndLast = yPoints[0] + yPoints[yPoints.Length-1];
-            double odd = 0;
-            double even = 0;
+            decimal firstAndLast = yPoints[0] + yPoints[yPoints.Length-1];
+            decimal odd = 0;
+            decimal even = 0;
 
             for (int z = 1; z < yPoints.Length-1; z++)
             {
@@ -82,7 +82,7 @@ namespace WPFCalculator
 
             return (h / 3) * (firstAndLast + (4 * odd) + (2 * even));
         }
-        public double GetSolution()
+        public decimal GetSolution()
         {
             return solution;
         }

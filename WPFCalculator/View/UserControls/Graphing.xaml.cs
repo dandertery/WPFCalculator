@@ -37,9 +37,9 @@ namespace WPFCalculator.View.UserControls
     public partial class Graphing : UserControl, INotifyPropertyChanged 
     {
         ObservablePoint[] functionsConcatenated;
-        double xMin; double xMax;
+        decimal xMin; decimal xMax;
         string preface = "y = ";
-        double yMin; double yMax;
+        decimal yMin; decimal yMax;
         List<Function> functionList = new List<Function>();
 
         struct Function
@@ -49,7 +49,7 @@ namespace WPFCalculator.View.UserControls
             ObservablePoint[] points;
 
 
-            public void GenerateFunction(string input, double xMinLocal, double xMaxLocal, double yMinLocal, double yMaxLocal)
+            public void GenerateFunction(string input, decimal xMinLocal, decimal xMaxLocal, decimal yMinLocal, decimal yMaxLocal)
             {
                 function = input;
                 Parsing functionParse = new Parsing(function);
@@ -83,7 +83,7 @@ namespace WPFCalculator.View.UserControls
             functions = new ObservableCollection<string>();
 
             InitializeComponent();
-            double rangeDefault = 10; //edit this
+            decimal rangeDefault = 10; //edit this
             xMin = rangeDefault * -1; yMin = rangeDefault * -1;
             xMax = rangeDefault; yMax = rangeDefault;
             xLowerTbx.Text = xMin.ToString();
@@ -131,8 +131,8 @@ namespace WPFCalculator.View.UserControls
         private void GenerateGraph()
         {
             CompileFunctions();
-            ObservablePoint[] xAxisPoints = new ObservablePoint[2] { new ObservablePoint(xMin, 0), new ObservablePoint(xMax, 0) };
-            ObservablePoint[] yAxisPoints = new ObservablePoint[2] { new ObservablePoint(0, yMin), new ObservablePoint(0, yMax) };
+            ObservablePoint[] xAxisPoints = new ObservablePoint[2] { new ObservablePoint((double?)xMin, 0), new ObservablePoint((double?)xMax, 0) };
+            ObservablePoint[] yAxisPoints = new ObservablePoint[2] { new ObservablePoint(0, (double?)yMin), new ObservablePoint(0, (double?)yMax) };
             if (yMin > 0 || yMax < 0)
             {
                 xAxisPoints = new ObservablePoint[0];
@@ -158,7 +158,7 @@ namespace WPFCalculator.View.UserControls
                 new LineSeries<ObservablePoint> // range
                 {
                     DataPadding = new LvcPoint(0,0),
-                    Values = new ObservablePoint[2] {new ObservablePoint(xMin,yMin), new ObservablePoint(xMax,yMax)},
+                    Values = new ObservablePoint[2] {new ObservablePoint((double?)xMin, (double?)yMin), new ObservablePoint((double?)xMax, (double?)yMax)},
                     Fill = null,
                     GeometrySize = 0,
                     Stroke = null
@@ -292,7 +292,7 @@ namespace WPFCalculator.View.UserControls
             try
             {
                 
-                double temp = double.Parse(xLowerTbx.Text);
+                decimal temp = decimal.Parse(xLowerTbx.Text);
                 if(temp < xMax)
                 {
                     xMin = temp;
@@ -312,7 +312,7 @@ namespace WPFCalculator.View.UserControls
             try
             {
 
-                double temp = double.Parse(xUpperTbx.Text);
+                decimal temp = decimal.Parse(xUpperTbx.Text);
                 if (temp > xMin)
                 {
                     xMax = temp;
@@ -332,7 +332,7 @@ namespace WPFCalculator.View.UserControls
             try
             {
 
-                double temp = double.Parse(yLowerTbx.Text);
+                decimal temp = decimal.Parse(yLowerTbx.Text);
                 if (temp < yMax)
                 {
                     yMin = temp;
@@ -351,7 +351,7 @@ namespace WPFCalculator.View.UserControls
             try
             {
 
-                double temp = double.Parse(yUpperTbx.Text);
+                decimal temp = decimal.Parse(yUpperTbx.Text);
                 if (temp > yMin)
                 {
                     yMax = temp;
