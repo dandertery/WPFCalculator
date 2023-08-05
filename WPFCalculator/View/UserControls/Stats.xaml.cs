@@ -33,34 +33,44 @@ namespace WPFCalculator.View.UserControls
             sampleAnalysisUC.Visibility = Visibility.Hidden;
 
         }
+
+        private void OnDistributionClicked(string dist)
+        {
+            distributionUC.setDistribution(dist);
+        }
         private void normalDistButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             distributionUC.Visibility = Visibility.Visible;
+            OnDistributionClicked("normal");
         }
 
         private void binDistButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             distributionUC.Visibility = Visibility.Visible;
+            OnDistributionClicked("bin");
         }
 
         private void poissonDistButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             distributionUC.Visibility = Visibility.Visible;
+            OnDistributionClicked("poisson");
         }
 
         private void tDistButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             distributionUC.Visibility = Visibility.Visible;
+            OnDistributionClicked("t");
         }
 
         private void mtthDistButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             distributionUC.Visibility = Visibility.Visible;
+            OnDistributionClicked("mtth");
         }
 
         private void piecewiseButton_Click(object sender, RoutedEventArgs e)
