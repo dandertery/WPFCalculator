@@ -37,10 +37,15 @@ namespace WPFCalculator.View.UserControls
     /// </summary>
     public partial class __Distribution : UserControl, INotifyPropertyChanged
     {
-        string dist;
+        private string dist;
+        private ObservablePoint[] pdfValues = new ObservablePoint[0];
         public __Distribution()
         {
+            DataContext = this;
             InitializeComponent();
+            chartPDF.TooltipFindingStrategy = LiveChartsCore.Measure.TooltipFindingStrategy.CompareAllTakeClosest;
+            chartPDF.TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Bottom;
+            chartPDF.EasingFunction = null;
         }
         private void Show2()
         {
@@ -69,20 +74,20 @@ namespace WPFCalculator.View.UserControls
             }
         }
         //////////////////////////////////////////////////// Binding for CDF
-        private ISeries[] vals2 { get; set; } = new ISeries[]
-        {
+        //private ISeries[] vals2 { get; set; } = new ISeries[]
+        //{
 
-        };
+        //};
 
-        public ISeries[] Vals2
-        {
-            get { return vals2; }
-            set
-            {
-                vals = value;
-                OnPropertyChanged("Vals2");
-            }
-        }
+        //public ISeries[] Vals2
+        //{
+        //    get { return vals2; }
+        //    set
+        //    {
+        //        vals2 = value;
+        //        OnPropertyChanged("Vals2");
+        //    }
+        //}
         ////////////////////////////////////////////////////
         public void setDistribution(string distInput)
         {
@@ -149,25 +154,51 @@ namespace WPFCalculator.View.UserControls
             decimal var2 = decimal.Parse(var2Input.Text);
             if(dist == "normal")
             {
-                decimal range = 10;
-                NormalDist normalDist = new NormalDist(-range, range, var1, var2);
+                decimal lower = var1 - (4 * var2);
+                decimal upper = var1 + (4 * var2);
+                NormalDist normalDist = new NormalDist(lower, upper, var1, var2);
+                ObservablePoint[] pdfValues = normalDist.GetPDFSet();
+                
                 vals = new ISeries[]
                 {
                     new LineSeries<ObservablePoint> // range
                     {
                         LineSmoothness = 0,
                         DataPadding = new LvcPoint(0,0),
-                        Values = normalDist.GetPDFSet(),
+                        Values = pdfValues,   
                         Fill = null,
                         GeometrySize = 0,
-                        Stroke = new SolidColorPaint(SKColors.Blue) { StrokeThickness = 4 },
+                        Stroke = new SolidColorPaint(SKColors.Blue) { StrokeThickness = 3 },
+                        //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
+
+                    },
+                    new LineSeries<ObservablePoint> // range
+                    {
+                        LineSmoothness = 0,
+                        DataPadding = new LvcPoint(0,0),
+                        Values = new ObservablePoint[] {new ObservablePoint(0,1) },
+                        Fill = null,
+                        GeometrySize = 0,
+                        Stroke = new SolidColorPaint(SKColors.Blue) { StrokeThickness = 0 },
+                        //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
+
+                    },
+                    new LineSeries<ObservablePoint> // range
+                    {
+                        LineSmoothness = 0,
+                        DataPadding = new LvcPoint(0,0),
+                        Values = new ObservablePoint[] {new ObservablePoint((double)lower, 0), new ObservablePoint((double)upper, 0)  },
+                        Fill = null,
+                        GeometrySize = 0,
+                        Stroke = new SolidColorPaint(SKColors.Black) { StrokeThickness = 1 },
                         //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
 
                     },
                 };
+                OnPropertyChanged("Vals");
 
-                
-                
+
+
             }
         }
 
