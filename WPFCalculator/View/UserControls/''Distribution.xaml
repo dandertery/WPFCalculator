@@ -52,11 +52,11 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Grid.Row="0">
                 <Label Content="Probability Density Chart" HorizontalAlignment="Center"/>
-                <lvc:CartesianChart x:Name="chartPDF"/>
+                <lvc:CartesianChart x:Name="chartPDF" Series="{Binding Vals, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1">
                 <Label Content=" Cumulative Distribution Chart" HorizontalAlignment="Center"/>
-                <lvc:CartesianChart x:Name="chartCum"/>
+                <lvc:CartesianChart x:Name="chartCum" Series="{Binding Vals2, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </Grid>
 

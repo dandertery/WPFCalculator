@@ -21,6 +21,7 @@ namespace WPFCalculator
 {
     internal abstract class DistributionTemplate
     {
+        protected decimal range;
         protected ObservablePoint[] pdfSet = new ObservablePoint[0]; //?
         protected ObservablePoint[] cumSet = new ObservablePoint[0];
 
@@ -33,10 +34,17 @@ namespace WPFCalculator
         {
             return cumSet;
         }
+        public decimal GetDefaultRange()
+        {
+            return range;
+        }
 
 
-        public abstract decimal CalculateProbability(decimal inputOne, decimal inputTwo, decimal input3);
-        public abstract decimal CalculateCumulative(decimal inputOne, decimal inputTwo, decimal input3);
+
+        protected abstract void CalculateDefaultRange();
+        
+        protected abstract decimal CalculateProbability(decimal inputOne, decimal inputTwo, decimal input3);
+        protected abstract decimal CalculateCumulative(decimal inputOne, decimal inputTwo, decimal input3);
 
     }
 }

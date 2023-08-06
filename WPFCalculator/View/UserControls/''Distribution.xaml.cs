@@ -12,13 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveChartsCore;
+using LiveChartsCore.Drawing;
+using LiveChartsCore.SkiaSharpView;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+using LiveChartsCore.Defaults;
+using SkiaSharp.Views;
+using System.Collections;
+using System.Data;
+using System.Drawing;
+using System.Diagnostics;
+using System.Runtime;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.Painting.Effects;
+using SkiaSharp;
+using Microsoft.Win32;
 
 namespace WPFCalculator.View.UserControls
 {
     /// <summary>
     /// Interaction logic for __Distribution.xaml
     /// </summary>
-    public partial class __Distribution : UserControl
+    public partial class __Distribution : UserControl, INotifyPropertyChanged
     {
         string dist;
         public __Distribution()
@@ -30,6 +47,43 @@ namespace WPFCalculator.View.UserControls
             var2Label.Visibility = Visibility.Visible;
             var2Input.Visibility = Visibility.Visible;
         }
+        //////////////////////////////////////////////////// Set up binding
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        //////////////////////////////////////////////////// Binding for PDF 
+        private ISeries[] vals { get; set; } = new ISeries[]
+        {
+
+        };
+        
+        public ISeries[] Vals
+        {
+            get { return vals; }
+            set 
+            { 
+                vals = value;
+                OnPropertyChanged("Vals");
+            }
+        }
+        //////////////////////////////////////////////////// Binding for CDF
+        private ISeries[] vals2 { get; set; } = new ISeries[]
+        {
+
+        };
+
+        public ISeries[] Vals2
+        {
+            get { return vals2; }
+            set
+            {
+                vals = value;
+                OnPropertyChanged("Vals2");
+            }
+        }
+        ////////////////////////////////////////////////////
         public void setDistribution(string distInput)
         {
             dist = distInput;
@@ -93,6 +147,11 @@ namespace WPFCalculator.View.UserControls
         {
             decimal var1 = decimal.Parse(var1Input.Text);
             decimal var2 = decimal.Parse(var2Input.Text);
+            if(dist == "normal")
+            {
+                NormalDist normalDist = new NormalDist();
+                
+            }
         }
 
     }
