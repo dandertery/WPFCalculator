@@ -149,7 +149,24 @@ namespace WPFCalculator.View.UserControls
             decimal var2 = decimal.Parse(var2Input.Text);
             if(dist == "normal")
             {
-                NormalDist normalDist = new NormalDist();
+                decimal range = 10;
+                NormalDist normalDist = new NormalDist(-range, range, var1, var2);
+                vals = new ISeries[]
+                {
+                    new LineSeries<ObservablePoint> // range
+                    {
+                        LineSmoothness = 0,
+                        DataPadding = new LvcPoint(0,0),
+                        Values = normalDist.GetPDFSet(),
+                        Fill = null,
+                        GeometrySize = 0,
+                        Stroke = new SolidColorPaint(SKColors.Blue) { StrokeThickness = 4 },
+                        //TooltipLabelFormatter = (chartPoint) => $"({RoundTo(chartPoint.SecondaryValue, 4)}, {RoundTo(chartPoint.PrimaryValue, 4)})"
+
+                    },
+                };
+
+                
                 
             }
         }

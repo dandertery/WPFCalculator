@@ -25,7 +25,18 @@ namespace WPFCalculator
         protected ObservablePoint[] pdfSet = new ObservablePoint[0]; //?
         protected ObservablePoint[] cumSet = new ObservablePoint[0];
 
-
+        public DistributionTemplate(decimal lower, decimal higher, decimal var1, decimal var2)
+        {
+            int resolution = 5000;
+            pdfSet = new ObservablePoint[resolution];
+            decimal pitch = (higher - lower) / resolution;
+            decimal x = lower;
+            for (int i = 0; i < resolution; i++)
+            {
+                pdfSet[i] = new ObservablePoint((double)x, (double)CalculateProbability(x, var1, var2));
+                x = x + pitch;
+            }
+        }
         public ObservablePoint[] GetPDFSet()
         {
             return pdfSet;
