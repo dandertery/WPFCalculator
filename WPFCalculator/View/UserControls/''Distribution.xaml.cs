@@ -37,6 +37,8 @@ namespace WPFCalculator.View.UserControls
     /// </summary>
     public partial class __Distribution : UserControl, INotifyPropertyChanged
     {
+        bool enterProb = false;
+        bool lessThan = true;
         private string dist;
         private ObservablePoint[] pdfValues = new ObservablePoint[0];
         public __Distribution()
@@ -46,6 +48,7 @@ namespace WPFCalculator.View.UserControls
             chartPDF.TooltipFindingStrategy = LiveChartsCore.Measure.TooltipFindingStrategy.CompareAllTakeClosest;
             chartPDF.TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Bottom;
             chartPDF.EasingFunction = null;
+            probTB.IsEnabled = false;
         }
         private void Show2()
         {
@@ -125,13 +128,26 @@ namespace WPFCalculator.View.UserControls
 
         private void enterProbButton_Click(object sender, RoutedEventArgs e)
         {
+            probTB.IsEnabled = !enterProb;
+            lowerTB.IsEnabled = enterProb;
+            upperTB.IsEnabled = enterProb;
+            enterProb = !enterProb;
 
         }
 
         private void probModeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if(lessThan)
+            {
+                probModeButton.Content = "P(x > X)";
+            }
+            else
+            {
+                probModeButton.Content = "P(x < X)";
+            }
+            lessThan = !lessThan;
         }
+
 
         private void lowerTB_TextChanged(object sender, TextChangedEventArgs e)
         {

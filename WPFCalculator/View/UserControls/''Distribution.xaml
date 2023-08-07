@@ -40,7 +40,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="20,0,20,20" HorizontalAlignment="Center">
                     <Button x:Name="enterProbButton" Content="Enter Probability" FontSize="20" Margin="5" Click="enterProbButton_Click"/>
-                    <Button x:Name="probModeButton" Content = "P(x&lt;X)" FontSize ="20" Margin="5" Click="probModeButton_Click"/>
+                    <Button x:Name="probModeButton" Content = "P(x &lt; X)" FontSize ="20" Margin="5" Click="probModeButton_Click"/>
                 </StackPanel>
             </StackPanel>
 
