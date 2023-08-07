@@ -23,6 +23,7 @@ namespace WPFCalculator.View.UserControls
         public Equation()
         {
             InitializeComponent();
+            
         }
     }
 }

@@ -7,25 +7,21 @@
              xmlns:local="clr-namespace:WPFCalculator.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="80*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-
-                </Grid.RowDefinitions>
-                <Button x:Name="quadraticButton" Content="Solve Quadratic" Grid.Row="0" FontSize="16"/>
-                <Button x:Name="cubicButton" Content="Solve Cubic" Grid.Row="1" FontSize="16"/>
-                <Button x:Name="quarticButton" Content="Solve Quartic" Grid.Row="2" FontSize="16"/>
-            </Grid>
-            <userControls:QuadraticSolver x:Name="quadSolver" Grid.Column="1"/>
-            
-        </Grid>
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Quadratic" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"/>
+        <TextBlock Text="Cubic" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
+        <TextBlock Text="Quartic" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
+        <TextBlock Text="Quintic" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3"/>
+        <userControls:QuadraticSolver Grid.Column ="1" Grid.Row="0"/>
     </Grid>
 </UserControl>
