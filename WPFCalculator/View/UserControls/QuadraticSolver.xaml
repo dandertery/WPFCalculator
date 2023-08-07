@@ -5,8 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFCalculator.View.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="100" d:DesignWidth="700">
     <Grid>
-            
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="aInputBox" MinWidth="30" FontSize="30" VerticalAlignment="Center" Margin="20, 0, 5, 0"/>
+            <TextBlock MinWidth="30" Text="x^2 + " FontSize="30" VerticalAlignment="Center" />
+            <TextBox x:Name="bInputBox" MinWidth="30" FontSize="30" VerticalAlignment="Center" Margin="0, 0, 5, 0" />
+            <TextBlock MinWidth="30" Text="x + " FontSize="30" VerticalAlignment="Center" />
+            <TextBox x:Name="cInputBox" MinWidth="30" FontSize="30" VerticalAlignment="Center" Margin="0, 0, 5, 0"/>
+            <TextBlock MinWidth="30" Text="= 0 " FontSize="30" VerticalAlignment="Center"/>
+            <Button x:Name="genButton" Content="Generate" VerticalAlignment="Center" FontSize="30" Margin="10,0,10,0" Click="genButton_Click"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock x:Name="rtTxt1" Text="Root: " FontSize="30"/>
+                <TextBlock x:Name="rtTxt2" Text="Root: " FontSize="30"/>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </UserControl>
