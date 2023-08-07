@@ -24,5 +24,30 @@ namespace WPFCalculator.View.UserControls
         {
             InitializeComponent();
         }
+
+        struct NumFreq
+        {
+            private decimal num;
+            private int freq;
+
+            public decimal Num
+            {
+                get { return num; }
+                set { num = value; }
+            }
+            public int Freq
+            {
+                get { return freq; }
+                set { freq = value; }
+            }
+        }
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            decimal num = decimal.Parse(valueInput.Text);
+            int freq = int.Parse(freqInput.Text);
+            NumFreq numFreq = new NumFreq();
+            numFreq.Freq = freq;
+            numFreq.Num = num;
+        }
     }
 }
