@@ -140,6 +140,16 @@ namespace WPFCalculator.View.UserControls
             else
             {
                 decimal chiSum = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    for (int z = 0; z < m; z++)
+                    {
+                        decimal observed = inputArray[i, z];
+                        decimal expected = outputArray[i, z];
+                        chiSum = chiSum + ((decimal)Math.Pow((double)(observed - expected), 2) / outputArray[i, z]);
+                    }
+                }
+                chiOutput.Text = chiPrefix + chiSum;
 
             }
         }
