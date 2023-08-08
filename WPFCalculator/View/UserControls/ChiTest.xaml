@@ -7,6 +7,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="hEE"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="Create Grid of " FontSize="20"/>
+            <TextBox x:Name="nInput" FontSize="20" MinWidth="20" Margin="5,0,5,0"/>
+            <TextBlock Text=" * " FontSize="20"/>
+            <TextBox x:Name="mInput" FontSize="20" MinWidth="20" Margin="5,0,5,0"/>
+            <TextBlock Text="cells" FontSize="20"/>
+            <Button x:Name="genButton" Content="Generate" FontSize="20" Margin="5,0,0,0" Click="genButton_Click"/>
+        </StackPanel>
     </Grid>
 </UserControl>

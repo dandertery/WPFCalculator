@@ -15,16 +15,34 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Value: " FontSize="20" VerticalAlignment="Center" Margin="20, 0, 0, 0"/>
                 <TextBox x:Name="valueInput" FontSize="20" VerticalAlignment="Center" MinWidth="20"/>
-                <TextBlock Text="Frequency: " FontSize="20" VerticalAlignment="Center" Margin="20, 0, 0, 0"/>
+                <TextBlock Text="Frequency: " FontSize="20" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                 <TextBox x:Name="freqInput" Text="1" FontSize="20" VerticalAlignment="Center" MinWidth="20"/>
-                <Button x:Name="addButton" Content="Add" FontSize="20" VerticalAlignment="Center" Margin="20, 0, 0, 0" Click="addButton_Click"/>
+                <Button x:Name="addButton" Content="Add" FontSize="20" VerticalAlignment="Center" Margin="5, 0, 0, 0" Click="addButton_Click"/>
+                <Button x:Name="deleteButton" Content="Delete" FontSize="20" VerticalAlignment="Center" Margin="5, 0, 0, 0" Click="deleteButton_Click"/>
+                <Button x:Name="clearButton" Content="Clear" FontSize="20" VerticalAlignment="Center" Margin="5, 0, 0, 0" Click="clearButton_Click"/>
 
             </StackPanel>
-
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="lvEntries" FontSize="30" ItemsSource="{Binding Entries}"/>
+            </ScrollViewer>
+            
+            <Button x:Name="genButton" Grid.Row="2" HorizontalAlignment="Center" Content="Generate" Click="genButton_Click"/>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="lvOutput" FontSize="30" ItemsSource="{Binding Output}"/>
+            </ScrollViewer>
+            
         </Grid>
     </Grid>
 </UserControl>

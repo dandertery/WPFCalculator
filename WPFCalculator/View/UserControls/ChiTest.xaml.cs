@@ -24,5 +24,11 @@ namespace WPFCalculator.View.UserControls
         {
             InitializeComponent();
         }
+
+        private void genButton_Click(object sender, RoutedEventArgs e)
+        {
+            int n = int.Parse(nInput.Text);
+            int m = int.Parse(mInput.Text);
+        }
     }
 }
