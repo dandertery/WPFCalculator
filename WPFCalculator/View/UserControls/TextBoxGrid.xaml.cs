@@ -20,45 +20,84 @@ namespace WPFCalculator.View.UserControls
     /// </summary>
     public partial class TextBoxGrid : UserControl
     {
-        public TextBoxGrid()
+        private int n;
+        private int m;
+        private List<TextBox> textBoxes;
+        public TextBoxGrid(int nInput, int mInput)
         {
-            
+            n = nInput;
+            m = mInput;
+            int headedN = n + 1;
+            int headedM = m + 1;
             InitializeComponent();
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < headedN; i++)
             {
                 gridXAML.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            for (int i = 0; i < m; i++)
+            for (int i = 0; i < headedM; i++)
             {
                 gridXAML.RowDefinitions.Add(new RowDefinition());
             }
-            List<TextBox> textBoxes = new List<TextBox>();
+            textBoxes = new List<TextBox>();
+            int f = 0;
+            for (int i = 1; i < headedN; i++)
+            {
+                for (int z = 1; z < headedM; z++)
+                {
+                    textBoxes.Add(new TextBox());
+                    textBoxes[textBoxes.Count - 1].FontSize = 20;
+                    textBoxes[textBoxes.Count - 1].HorizontalContentAlignment = HorizontalAlignment.Center;
+                    textBoxes[textBoxes.Count - 1].VerticalContentAlignment = VerticalAlignment.Center;
+
+                    gridXAML.Children.Add(textBoxes[f]);
+                    Grid.SetColumn(textBoxes[f], i);
+                    Grid.SetRow(textBoxes[f], z);     
+                    f++;
+                }
+            }
+            for (int i = 1; i < headedN; i++)
+            {
+                TextBlock tb = new TextBlock();
+                tb.Text = ((char)(64 + i)).ToString();
+                tb.FontSize = 20;
+                tb.VerticalAlignment = VerticalAlignment.Center;
+                tb.HorizontalAlignment = HorizontalAlignment.Center;
+                gridXAML.Children.Add((TextBlock)tb);
+                Grid.SetRow(tb, 0);
+                Grid.SetColumn(tb, i);
+            }
+            for (int i = 1; i < headedM; i++)
+            {
+                TextBlock tb = new TextBlock();
+                tb.Text = i.ToString();
+                tb.FontSize = 20;
+                tb.VerticalAlignment = VerticalAlignment.Center;
+                tb.HorizontalAlignment = HorizontalAlignment.Center;
+                gridXAML.Children.Add((TextBlock)tb);
+                Grid.SetRow(tb, i);
+                Grid.SetColumn(tb, 0);
+            }
+        }
+
+        public decimal[,] getInputArray()
+        {
+            return ConvertInput();
+        }
+
+        private decimal[,] ConvertInput()
+        {
+            decimal[,] inputArray = new decimal[n, m];
             int f = 0;
             for (int i = 0; i < n; i++)
             {
                 for (int z = 0; z < m; z++)
                 {
-                    textBoxes.Add(new TextBox());
-                    gridXAML.Children.Add(textBoxes[f]);
-                    f++;
+                    inputArray[i, z] = decimal.Parse(textBoxes[f].Text);
                 }
             }
-        }
-        private int n;
-
-        public int N
-        {
-            get { return n; }
-            set { n = value; }
+            return inputArray;
         }
 
-        private int m;
-
-        public int M
-        {
-            get { return m; }
-            set { m = value; }
-        }
 
 
     }

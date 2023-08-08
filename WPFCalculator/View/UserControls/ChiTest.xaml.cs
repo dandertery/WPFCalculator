@@ -24,17 +24,41 @@ namespace WPFCalculator.View.UserControls
         public ChiTest()
         {
             InitializeComponent();
+            exeButton.IsEnabled = false;
         }
-
+        private TextBoxGrid tbGrid;
+        private int n;
+        private int m;
         private void genButton_Click(object sender, RoutedEventArgs e)
         {
-            int n = int.Parse(nInput.Text);
-            int m = int.Parse(mInput.Text);
+            try
+            {
+                n = int.Parse(nInput.Text);
+                m = int.Parse(mInput.Text);
+                if (n < 27 && m < 27)
+                {
+                    tbGrid = new TextBoxGrid(n, m);
+                    gridContainer.Children.Add(tbGrid);
+                    exeButton.IsEnabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
 
-            TextBoxGrid tbGrid = new TextBoxGrid();
-            tbGrid.N = n;
-            tbGrid.M = m;
-            gridContainer.Children.Add(tbGrid);
+            }
+
+
+        }
+
+        private void exeButton_Click(object sender, RoutedEventArgs e)
+        {
+            decimal[,] inputArray = tbGrid.getInputArray();
+            decimal[,] outputArray = CalculateExpected(inputArray);
+        }
+
+        private decimal[,] CalculateExpected(decimal[,] input)
+        {
+            
         }
     }
 }

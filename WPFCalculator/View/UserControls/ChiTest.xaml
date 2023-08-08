@@ -16,18 +16,23 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition/>
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-            <TextBlock Text="Create Grid of " FontSize="20"/>
-            <TextBox x:Name="nInput" FontSize="20" MinWidth="20" Margin="5,0,5,0"/>
-            <TextBlock Text=" * " FontSize="20"/>
-            <TextBox x:Name="mInput" FontSize="20" MinWidth="20" Margin="5,0,5,0"/>
-            <TextBlock Text="cells" FontSize="20"/>
-            <Button x:Name="genButton" Content="Generate" FontSize="20" Margin="5,0,0,0" Click="genButton_Click"/>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Create Grid of " FontSize="20"/>
+                <TextBox x:Name="nInput" FontSize="20" MinWidth="20" Margin="5,0,5,0"/>
+                <TextBlock Text=" * " FontSize="20"/>
+                <TextBox x:Name="mInput" FontSize="20" MinWidth="20" Margin="5,0,5,0"/>
+                <TextBlock Text="cells" FontSize="20"/>
+                <Button x:Name="genButton" Content="Generate" FontSize="20" Margin="5,0,0,0" Click="genButton_Click"/>
+            </StackPanel>
+            <TextBlock Text="n / m must be &lt;27" FontSize="20"/>
         </StackPanel>
-        <Grid x:Name="gridContainer" Grid.Row="1">
+        <Grid x:Name="gridContainer" Grid.Row="1" Margin="5">
             
         </Grid>
+        <Button x:Name="exeButton" Content="Execute" HorizontalAlignment="Right" Grid.Row="2" Margin="5" Click="exeButton_Click"/>
 
 
 

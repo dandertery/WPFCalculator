@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500">
     <Grid x:Name="gridXAML" ShowGridLines="True">
-        <TextBlock Text="aaaa"/>
+        
     </Grid>
 </UserControl>
