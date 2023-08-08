@@ -23,12 +23,13 @@ namespace WPFCalculator.View.UserControls
         private int n;
         private int m;
         private List<TextBox> textBoxes;
+        private List<TextBlock> totalBlocks;
         public TextBoxGrid(int nInput, int mInput)
         {
             n = nInput;
             m = mInput;
-            int headedN = n + 1;
-            int headedM = m + 1;
+            int headedN = n + 2;
+            int headedM = m + 2;
             InitializeComponent();
             for (int i = 0; i < headedN; i++)
             {
@@ -40,9 +41,9 @@ namespace WPFCalculator.View.UserControls
             }
             textBoxes = new List<TextBox>();
             int f = 0;
-            for (int i = 1; i < headedN; i++)
+            for (int i = 1; i < headedN-1; i++)
             {
-                for (int z = 1; z < headedM; z++)
+                for (int z = 1; z < headedM-1; z++)
                 {
                     textBoxes.Add(new TextBox());
                     textBoxes[textBoxes.Count - 1].FontSize = 20;
@@ -55,7 +56,7 @@ namespace WPFCalculator.View.UserControls
                     f++;
                 }
             }
-            for (int i = 1; i < headedN; i++)
+            for (int i = 1; i < headedN-1; i++)
             {
                 TextBlock tb = new TextBlock();
                 tb.Text = ((char)(64 + i)).ToString();
@@ -66,7 +67,7 @@ namespace WPFCalculator.View.UserControls
                 Grid.SetRow(tb, 0);
                 Grid.SetColumn(tb, i);
             }
-            for (int i = 1; i < headedM; i++)
+            for (int i = 1; i < headedM-1; i++)
             {
                 TextBlock tb = new TextBlock();
                 tb.Text = i.ToString();
@@ -76,6 +77,27 @@ namespace WPFCalculator.View.UserControls
                 gridXAML.Children.Add((TextBlock)tb);
                 Grid.SetRow(tb, i);
                 Grid.SetColumn(tb, 0);
+            }
+            TextBlock ttb = new TextBlock();
+            ttb.Text = "Total";
+            ttb.FontSize = 20;
+            ttb.VerticalAlignment = VerticalAlignment.Center;
+            ttb.HorizontalAlignment = HorizontalAlignment.Center;
+            gridXAML.Children.Add((TextBlock)ttb);
+            Grid.SetRow(ttb, headedN);
+            Grid.SetColumn(ttb, 0);
+
+            TextBlock ttb2 = new TextBlock();
+            ttb2.Text = "Total";
+            ttb2.FontSize = 20;
+            ttb2.VerticalAlignment = VerticalAlignment.Center;
+            ttb2.HorizontalAlignment = HorizontalAlignment.Center;
+            gridXAML.Children.Add((TextBlock)ttb2);
+            Grid.SetRow(ttb2, 0);
+            Grid.SetColumn(ttb2, headedM);
+            for (int i = 0; i < length; i++)
+            {
+
             }
         }
 

@@ -58,7 +58,7 @@ namespace WPFCalculator.View.UserControls
 
         private decimal[,] CalculateExpected(decimal[,] input)
         {
-            
+            return null;
         }
     }
 }
