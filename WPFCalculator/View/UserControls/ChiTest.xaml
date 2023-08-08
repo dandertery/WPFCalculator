@@ -32,8 +32,16 @@
         <Grid x:Name="gridContainer" Grid.Row="1" Margin="5">
             
         </Grid>
-        <Button x:Name="exeButton" Content="Execute" HorizontalAlignment="Right" Grid.Row="2" Margin="5" Click="exeButton_Click"/>
+        <Grid x:Name="outputGridContainer" Grid.Row="1" Grid.Column="1" Margin="5">
 
+        </Grid>
+        <Button x:Name="exeButton" Content="Execute" HorizontalAlignment="Right" Grid.Row="2" Margin="5" Click="exeButton_Click"/>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="calcChiButton" Content="Calculate Test Statistic" Click="calcChiButton_Click" Margin="0,0,20,0"/>
+            <TextBlock x:Name="yatesLabel" FontSize="15" Text="Use Yates' Correction:" VerticalAlignment="Center"/>
+            <CheckBox x:Name="yatesCheckBox" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="5" IsChecked="False" Checked="yatesCheckBox_Checked" Unchecked="yatesCheckBox_Unchecked" />
+            <TextBlock x:Name="chiOutput" VerticalAlignment="Center" Margin="5" Text="chi statistic = "/>
+        </StackPanel>
 
 
     </Grid>

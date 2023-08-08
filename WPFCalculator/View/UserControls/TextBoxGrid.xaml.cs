@@ -23,7 +23,7 @@ namespace WPFCalculator.View.UserControls
         private int n;
         private int m;
         private List<TextBox> textBoxes;
-        private List<TextBlock> totalBlocks;
+        private List<TextBlock>? totalBlocks;
         public TextBoxGrid(int nInput, int mInput)
         {
             n = nInput;
@@ -40,6 +40,7 @@ namespace WPFCalculator.View.UserControls
                 gridXAML.RowDefinitions.Add(new RowDefinition());
             }
             textBoxes = new List<TextBox>();
+            totalBlocks = new List<TextBlock>();
             int f = 0;
             for (int i = 1; i < headedN-1; i++)
             {
@@ -95,9 +96,27 @@ namespace WPFCalculator.View.UserControls
             gridXAML.Children.Add((TextBlock)ttb2);
             Grid.SetRow(ttb2, 0);
             Grid.SetColumn(ttb2, headedM);
-            for (int i = 0; i < length; i++)
+            for (int i = 1; i < headedM-1; i++)
             {
-
+                TextBlock tbl = new TextBlock();
+                tbl.FontSize = 20;
+                tbl.VerticalAlignment = VerticalAlignment.Center;
+                tbl.HorizontalAlignment = HorizontalAlignment.Center;
+                totalBlocks.Add(tbl);
+                gridXAML.Children.Add(tbl);
+                Grid.SetRow(tbl, i);
+                Grid.SetColumn(tbl, headedN);
+            }
+            for (int i = 1; i < headedN; i++)
+            {
+                TextBlock tbl = new TextBlock();
+                tbl.FontSize = 20;
+                tbl.VerticalAlignment = VerticalAlignment.Center;
+                tbl.HorizontalAlignment = HorizontalAlignment.Center;
+                totalBlocks.Add(tbl);
+                gridXAML.Children.Add(tbl);
+                Grid.SetRow(tbl, headedM);
+                Grid.SetColumn(tbl, i);
             }
         }
 
@@ -108,6 +127,7 @@ namespace WPFCalculator.View.UserControls
 
         private decimal[,] ConvertInput()
         {
+            
             decimal[,] inputArray = new decimal[n, m];
             int f = 0;
             for (int i = 0; i < n; i++)
@@ -115,8 +135,35 @@ namespace WPFCalculator.View.UserControls
                 for (int z = 0; z < m; z++)
                 {
                     inputArray[i, z] = decimal.Parse(textBoxes[f].Text);
+                    f++;
                 }
             }
+            int y = 0;
+            for (int i = 0; i < m; i++)
+            {
+                decimal sum = 0;
+                for (int z = 0; z < n; z++)
+                {
+                    sum = sum + inputArray[z, i];
+                }
+                totalBlocks[y].Text = sum.ToString();
+                y++;
+
+            }
+            decimal overall = 0;
+            for (int i = 0; i < n; i++)
+            {
+                decimal sum = 0;
+                for (int z = 0; z < m; z++)
+                {
+                    sum = sum + inputArray[i, z];
+                }
+                totalBlocks[y].Text = sum.ToString();
+                overall = overall + sum;
+                y++;
+
+            }
+            totalBlocks[totalBlocks.Count-1].Text = overall.ToString(); 
             return inputArray;
         }
 
