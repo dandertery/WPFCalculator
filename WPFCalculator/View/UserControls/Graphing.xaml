@@ -36,6 +36,7 @@
 
             
         </Grid>
+        
         <Grid Grid.Column="2"> <!-- right grid -->
             
             <Grid.RowDefinitions>

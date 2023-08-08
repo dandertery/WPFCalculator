@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFCalculator.View.UserControls;
 
 namespace WPFCalculator.View.UserControls
 {
@@ -29,6 +30,11 @@ namespace WPFCalculator.View.UserControls
         {
             int n = int.Parse(nInput.Text);
             int m = int.Parse(mInput.Text);
+
+            TextBoxGrid tbGrid = new TextBoxGrid();
+            tbGrid.N = n;
+            tbGrid.M = m;
+            gridContainer.Children.Add(tbGrid);
         }
     }
 }

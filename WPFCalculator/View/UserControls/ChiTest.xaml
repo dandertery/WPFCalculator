@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFCalculator.View.UserControls"
+             xmlns:userControls="clr-namespace:WPFCalculator.View.UserControls"
+
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -23,5 +25,11 @@
             <TextBlock Text="cells" FontSize="20"/>
             <Button x:Name="genButton" Content="Generate" FontSize="20" Margin="5,0,0,0" Click="genButton_Click"/>
         </StackPanel>
+        <Grid x:Name="gridContainer" Grid.Row="1">
+            
+        </Grid>
+
+
+
     </Grid>
 </UserControl>
