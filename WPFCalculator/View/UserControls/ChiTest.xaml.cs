@@ -61,6 +61,8 @@ namespace WPFCalculator.View.UserControls
                     tbGrid = new TextBoxGrid(n, m);
                     gridContainer.Children.Add(tbGrid);
                     exeButton.IsEnabled = true;
+
+                    chiOutput.Text = chiPrefix;
                 }
             }
             catch (Exception ex)
@@ -135,7 +137,17 @@ namespace WPFCalculator.View.UserControls
         {
             if(yates)
             {
-
+                decimal chiSum = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    for (int z = 0; z < m; z++)
+                    {
+                        decimal observed = inputArray[i, z];
+                        decimal expected = outputArray[i, z];
+                        chiSum = chiSum + ((decimal)(Math.Pow((double)(Math.Abs(observed - expected) - (decimal)0.5), 2)) / outputArray[i, z]);
+                    }
+                }
+                chiOutput.Text = chiPrefix + chiSum;
             }
             else
             {

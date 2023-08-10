@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="WPFCalculator.View.UserControls.discreteDistribution"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFCalculator.View.UserControls"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="34.2*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="65*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock x:Name="var1Label" Text="Var1:" FontSize="20"/>
+                    <TextBox x:Name="var1Input" FontSize="20" Margin="10,0,0,0" MinWidth="50"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock x:Name ="var2Label" Text="Var2:" FontSize="20"/>
+                    <TextBox x:Name="var2Input" FontSize="20" Margin="10,0,0,0" MinWidth="50"/>
+                </StackPanel>
+                <Button x:Name="genBtn" Content="Generate" Margin="5" FontSize="20" HorizontalAlignment="Center" Click ="genBtn_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,5,20,5">
+                    <TextBlock Text="P( " FontSize="20"/>
+                    <TextBox x:Name="lowerTB" FontSize="20" MinWidth="30" TextChanged="lowerTB_TextChanged"/>
+                    <TextBlock Text=" &lt; X &lt; " FontSize="20"/>
+                    <TextBox x:Name="upperTB" FontSize="20" MinWidth="30" TextChanged="upperTB_TextChanged"/>
+                    <TextBlock Text=" ) = " FontSize="20"/>
+                    <TextBox x:Name="probTB" FontSize="20" MinWidth="30" TextChanged="probTB_TextChanged"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,20,20" HorizontalAlignment="Center">
+                    <Button x:Name="enterProbButton" Content="Enter Probability" FontSize="20" Margin="5" Click="enterProbButton_Click"/>
+                    <Button x:Name="probModeButton" Content = "P(x &lt; X)" FontSize ="20" Margin="5" Click="probModeButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Probability Density Chart" HorizontalAlignment="Center"/>
+            <lvc:CartesianChart x:Name="chartPDF" Series="{Binding Vals, UpdateSourceTrigger=PropertyChanged}" XAxes="{Binding XAxes}"/>
+
+        </Grid>
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+
+
+
+    
+    </Grid>
+</UserControl>

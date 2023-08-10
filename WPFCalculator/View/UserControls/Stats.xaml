@@ -36,6 +36,7 @@
             
         </Grid>
         <userControls:__Distribution x:Name="distributionUC" Grid.Column="1"/>
+        
         <userControls:Piecewise x:Name="piecewiseUC" Grid.Column="1"/>
         <userControls:ChiTest x:Name="chiTestUC" Grid.Column="1"/>
         <userControls:SampleAnalysis x:Name="sampleAnalysisUC" Grid.Column="1"/>
