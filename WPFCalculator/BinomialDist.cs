@@ -21,20 +21,24 @@ namespace WPFCalculator
 {
     internal class BinomialDist
     {
-        protected decimal[] range = new decimal[2];
         protected ObservablePoint[] pdfSet = new ObservablePoint[0]; //?
         protected ObservablePoint[] cumSet = new ObservablePoint[0];
 
-        public BinomialDist(int lower, int higher, decimal n, decimal p)
+        public BinomialDist(int lower, int higher, int n, decimal p)
         {
             int setLength = higher - lower + 1; //+1?
             pdfSet = new ObservablePoint[setLength];
             
-            decimal x = lower;
+            int x = lower;
             for (int i = 0; i < setLength; i++)
             {
-                pdfSet[i] = new ObservablePoint((double)x, (double)CalculateProbability(x, var1, var2));
+                pdfSet[i] = new ObservablePoint((double)x, (double)CalculateProbability(x, n, p));
                 x = x + 1;
+            }
+            cumSet = new ObservablePoint[setLength];
+            for (int i = 0; i < setLength; i++)
+            {
+                cumSet[i] = new ObservablePoint(pdfSet[i].X, CalculateCumulative(i, pdfSet));
             }
 
         }
@@ -46,16 +50,34 @@ namespace WPFCalculator
         {
             return cumSet;
         }
-        public decimal[] GetDefaultRange()
+
+        private int Factorial(int r)
         {
-            return range;
+            if(r < 2)
+            {
+                return 1;
+            }
+            else
+            {
+                return r * Factorial(r - 1);
+            }
         }
 
-
-
-        protected abstract void CalculateDefaultRange();
-
-        protected abstract decimal CalculateProbability(decimal inputOne, decimal inputTwo, decimal input3);
-        protected abstract decimal CalculateCumulative(decimal inputOne, decimal inputTwo, decimal input3);
+        private decimal CalculateProbability(int x, int n, decimal p)
+        {
+            int combinations = Factorial(n) / (Factorial(x) * Factorial(n - x));
+            decimal q = 1 - p;
+            decimal prob = (decimal)(combinations * Math.Pow((double)p,x) * Math.Pow((double)q, n-x));
+            return prob;
+        }
+        private double CalculateCumulative(int index, ObservablePoint[] inputCum)
+        {
+            double sum = 0;
+            for (int i = 0; i < index+1; i++)
+            {
+                sum = sum + (double)inputCum[i].Y;
+            }
+            return sum;
+        }
     }
 }

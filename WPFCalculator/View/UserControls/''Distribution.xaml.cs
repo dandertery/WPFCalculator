@@ -77,20 +77,20 @@ namespace WPFCalculator.View.UserControls
             }
         }
         //////////////////////////////////////////////////// Binding for CDF
-        //private ISeries[] vals2 { get; set; } = new ISeries[]
-        //{
+        private ISeries[] vals2 { get; set; } = new ISeries[]
+        {
 
-        //};
+        };
 
-        //public ISeries[] Vals2
-        //{
-        //    get { return vals2; }
-        //    set
-        //    {
-        //        vals2 = value;
-        //        OnPropertyChanged("Vals2");
-        //    }
-        //}
+        public ISeries[] Vals2
+        {
+            get { return vals2; }
+            set
+            {
+                vals2 = value;
+                OnPropertyChanged("Vals2");
+            }
+        }
         ////////////////////////////////////////////////////
         public void setDistribution(string distInput)
         {
@@ -215,6 +215,35 @@ namespace WPFCalculator.View.UserControls
 
 
 
+            }
+            else if(dist == "bin")
+            {
+                int lower = 0;
+                int intVar1 = Convert.ToInt32(var1);
+                
+                BinomialDist binomialDist = new BinomialDist(lower, intVar1, intVar1, var2);
+                ObservablePoint[] pdfValues = binomialDist.GetPDFSet();
+                ObservablePoint[] cdfValues = binomialDist.GetCumSet();
+                vals = new ISeries[]
+                {
+                    new ColumnSeries<ObservablePoint>
+                    {
+                        Name = "PDF",
+                        Values = pdfValues
+                    }
+
+                };
+
+                vals2 = new ISeries[]
+                {
+                    new ColumnSeries<ObservablePoint>
+                    {
+                        Name = "CDF",
+                        Values = cdfValues
+                    }
+                };
+                OnPropertyChanged("Vals");
+                OnPropertyChanged("Vals2");
             }
         }
 
