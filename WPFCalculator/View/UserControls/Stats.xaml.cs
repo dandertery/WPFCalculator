@@ -22,6 +22,7 @@ namespace WPFCalculator.View.UserControls
     {
         public Stats()
         {
+            
             InitializeComponent();
             Hide();
         }

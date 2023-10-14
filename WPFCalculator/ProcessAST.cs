@@ -13,6 +13,7 @@ namespace WPFCalculator
         private Variable ANS = new Variable();
         private Variable X = new Variable();
         private TreeNode AST;
+        private Dictionary<string, decimal> inputVariables;
         private string[] functionArray = { "cos", "sin", "log", "ln", "abs" }; //to determine nature of parsed function tokens
         private string[] operationArray = { "^", "*", "/", "-", "+" }; // to determine nature of parsed operation tokens
         struct Variable
@@ -34,8 +35,9 @@ namespace WPFCalculator
         }
 
         private decimal result = -1;
-        public  ProcessAST(TreeNode abstractSyntaxTree, decimal ansValue, decimal xValue)
+        public  ProcessAST(TreeNode abstractSyntaxTree, decimal ansValue, decimal xValue, Dictionary<string, decimal> variables = null)
         {
+            inputVariables = variables;
             AST = abstractSyntaxTree;
             InitialiseVariables();
             ANS.value = ansValue;
@@ -56,6 +58,18 @@ namespace WPFCalculator
                 variableArray.Add(PI);
                 variableArray.Add(ANS);
                 variableArray.Add(X);
+                if(inputVariables != null)
+                {
+                    for (int i = 0; i < inputVariables.Count; i++)
+                    {
+                        KeyValuePair<string, decimal> pair = inputVariables.ElementAt(i);
+                        Variable temp = new Variable();
+                        temp.letter = pair.Key;
+                        temp.value = pair.Value;
+                        variableArray.Add(temp);
+                    }
+                }
+
                 return ProcessTree(AST, variableArray);
             }
             catch (Exception)

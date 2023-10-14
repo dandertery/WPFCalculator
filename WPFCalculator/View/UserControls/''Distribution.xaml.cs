@@ -41,6 +41,9 @@ namespace WPFCalculator.View.UserControls
         bool lessThan = true;
         private string dist;
         private ObservablePoint[] pdfValues = new ObservablePoint[0];
+        private decimal low;
+        private decimal upp;
+        private decimal prob;
         public __Distribution()
         {
             DataContext = this;
@@ -151,16 +154,27 @@ namespace WPFCalculator.View.UserControls
 
         private void lowerTB_TextChanged(object sender, TextChangedEventArgs e)
         {
+            low = decimal.Parse(lowerTB.Text);
 
         }
 
         private void upperTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            upp = decimal.Parse(upperTB.Text);
         }
 
         private void probTB_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                decimal tempProb = decimal.Parse(probTB.Text);
+                if (tempProb <= 1 && tempProb >= 0)
+                    prob = tempProb;
+            }
+            catch(Exception ex)
+            {
+
+            }
 
         }
 

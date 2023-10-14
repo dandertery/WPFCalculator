@@ -36,7 +36,7 @@ namespace WPFCalculator
         private TreeNode abstractSyntaxTree;
         private string expression;
         decimal solution;
-        public IntegralSolver(string inputExpression, string lowerLimit, string upperLimit)
+        public IntegralSolver(string inputExpression, string lowerLimit, string upperLimit, Dictionary<string, decimal> variables = null)
         {
             int resolution = 500000;
             resolution = resolution * 2; // must be even 
@@ -51,7 +51,7 @@ namespace WPFCalculator
         }
 
 
-        private decimal Integrate(TreeNode AST, int n, decimal lower, decimal upper) // Simpson's rule
+        private decimal Integrate(TreeNode AST, int n, decimal lower, decimal upper, Dictionary<string, decimal> variables = null) // Simpson's rule
         {
             decimal h = (upper - lower) / n;
             decimal x = lower;

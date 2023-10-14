@@ -54,7 +54,7 @@ namespace WPFCalculator
 
 
         protected abstract void CalculateDefaultRange();
-        
+        protected abstract decimal CalculateRangeProbability(decimal lower, decimal higher, decimal sd, decimal mean);
         protected abstract decimal CalculateProbability(decimal inputOne, decimal inputTwo, decimal input3);
         protected abstract decimal CalculateCumulative(decimal inputOne, decimal inputTwo, decimal input3);
 
