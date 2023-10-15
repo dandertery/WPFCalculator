@@ -24,6 +24,8 @@ namespace WPFCalculator
         protected decimal[] range = new decimal[2];
         protected ObservablePoint[] pdfSet = new ObservablePoint[0]; //?
         protected ObservablePoint[] cumSet = new ObservablePoint[0];
+        protected decimal dsd;
+        protected decimal dmean;
 
         public DistributionTemplate(decimal lower, decimal higher, decimal var1, decimal var2)
         {
@@ -36,6 +38,9 @@ namespace WPFCalculator
                 pdfSet[i] = new ObservablePoint((double)x, (double)CalculateProbability(x, var1, var2));
                 x = x + pitch;
             }
+            dmean = var1;
+            dsd = var2;
+            
             
         }
         public ObservablePoint[] GetPDFSet()
@@ -49,6 +54,19 @@ namespace WPFCalculator
         public decimal[] GetDefaultRange()
         {
             return range;
+        }
+        public decimal GetMean()
+        {
+            return dmean;
+        }
+        public decimal GetSD()
+        {
+            return dsd;
+        }
+
+        public decimal GetProb(decimal lower, decimal higher, decimal sd, decimal mean)
+        {
+            return CalculateRangeProbability(lower, higher, sd, mean);
         }
 
 

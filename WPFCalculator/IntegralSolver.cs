@@ -44,7 +44,14 @@ namespace WPFCalculator
             expression = inputExpression;
             decimal a = decimal.Parse(lowerLimit);
             decimal b = decimal.Parse(upperLimit);
-
+            if(a == decimal.MinValue)
+            {
+                a = -10000; // this is a jank testing limit, use some formulation with SD later
+            }
+            if(b == decimal.MaxValue)
+            {
+                b = 10000; //^
+            }
             Parsing parser = new Parsing(expression);
             abstractSyntaxTree = parser.GetTree();
             solution = Integrate(abstractSyntaxTree, resolution, a, b);

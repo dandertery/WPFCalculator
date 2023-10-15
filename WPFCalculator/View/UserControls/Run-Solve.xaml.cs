@@ -83,8 +83,10 @@ namespace WPFCalculator.View.UserControls
                 return output;
             }
         }
-       
-        
 
+        private void ClearableTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

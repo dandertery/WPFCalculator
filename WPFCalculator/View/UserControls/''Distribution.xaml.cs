@@ -39,11 +39,14 @@ namespace WPFCalculator.View.UserControls
     {
         bool enterProb = false;
         bool lessThan = true;
+        bool generated = false;
         private string dist;
         private ObservablePoint[] pdfValues = new ObservablePoint[0];
         private decimal low;
         private decimal upp;
         private decimal prob;
+
+        NormalDist normalDist;
         public __Distribution()
         {
             DataContext = this;
@@ -161,6 +164,26 @@ namespace WPFCalculator.View.UserControls
         private void upperTB_TextChanged(object sender, TextChangedEventArgs e)
         {
             upp = decimal.Parse(upperTB.Text);
+            try
+            {
+                handleProbLimits();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        
+        private void handleProbLimits()
+        {
+            if(!enterProb && generated)
+            {
+                if(dist == "normal")
+                {
+                    prob = normalDist.GetProb(low, upp, normalDist.GetMean(), normalDist.GetSD());
+                    probTB.Text = prob.ToString();
+                }
+            }
         }
 
         private void probTB_TextChanged(object sender, TextChangedEventArgs e)
@@ -182,11 +205,13 @@ namespace WPFCalculator.View.UserControls
         {
             decimal var1 = decimal.Parse(var1Input.Text);
             decimal var2 = decimal.Parse(var2Input.Text);
+            generated = true;
             if(dist == "normal")
             {
+                
                 decimal lower = var1 - (4 * var2);
                 decimal upper = var1 + (4 * var2);
-                NormalDist normalDist = new NormalDist(lower, upper, var1, var2);
+                normalDist = new NormalDist(lower, upper, var1, var2);
                 ObservablePoint[] pdfValues = normalDist.GetPDFSet();
                 
                 vals = new ISeries[]
@@ -258,6 +283,10 @@ namespace WPFCalculator.View.UserControls
                 };
                 OnPropertyChanged("Vals");
                 OnPropertyChanged("Vals2");
+            }
+            else
+            {
+                generated = false; //default case, make a switch statement
             }
         }
 

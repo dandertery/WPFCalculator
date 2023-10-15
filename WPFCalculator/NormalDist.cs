@@ -10,7 +10,6 @@ namespace WPFCalculator
     {
         public NormalDist(decimal lower, decimal higher, decimal var1, decimal var2) : base(lower, higher, var1, var2)
         {
-            
         }
         protected override decimal CalculateCumulative(decimal inputOne, decimal inputTwo, decimal inputThree)
         {
@@ -18,8 +17,8 @@ namespace WPFCalculator
             decimal m = inputTwo;
             decimal s = inputThree; //standard deviation
             Dictionary<string, decimal> ms = new Dictionary<string, decimal>();
-            ms.Add("m", m);
-            ms.Add("s", s);
+            ms.Add("M", m);
+            ms.Add("S", s);
             if (value == decimal.MaxValue)
             {
                 return 1;
@@ -30,10 +29,12 @@ namespace WPFCalculator
             }
             else
             {
-                IntegralSolver gaussianIntegral = new IntegralSolver("x", decimal.MinValue.ToString(), value.ToString(), variables: ms);
+                string function = "(1/(S*π*2))*(e^(-0.5*((x-M)^2)/S^2))";
+                IntegralSolver gaussianIntegral = new IntegralSolver(function, decimal.MinValue.ToString(), value.ToString(), variables: ms);
                 return gaussianIntegral.GetSolution();
             }
         }
+
         protected override decimal CalculateProbability(decimal xInput, decimal meanInput, decimal sd)
         {
             decimal mean = meanInput;
@@ -47,9 +48,11 @@ namespace WPFCalculator
         {
             
         }
-        protected override decimal CalculateRangeProbability(decimal lower, decimal higher, decimal sd, decimal mean)
+        protected override decimal CalculateRangeProbability(decimal lower, decimal higher, decimal mean, decimal sd)
         {
             return CalculateCumulative(higher, mean, sd) - CalculateCumulative(lower, mean, sd);
         }
+
+
     }
 }
