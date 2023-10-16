@@ -22,6 +22,6 @@
         <TextBlock Text="Cubic" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
         <TextBlock Text="Quartic" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
         <TextBlock Text="Quintic" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3"/>
-        <userControls:QuadraticSolver Grid.Column ="1" Grid.Row="0"/>
+        <userControls:QuadraticSolver Grid.Column ="1" Grid.Row="0" Loaded="QuadraticSolver_Loaded"/>
     </Grid>
 </UserControl>

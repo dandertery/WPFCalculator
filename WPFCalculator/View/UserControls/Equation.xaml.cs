@@ -25,5 +25,10 @@ namespace WPFCalculator.View.UserControls
             InitializeComponent();
             
         }
+
+        private void QuadraticSolver_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
