@@ -64,7 +64,7 @@ namespace WPFCalculator
                         }
                         differenceStore = difference;
                     }
-                    //
+                    ///
                     ProcessAST startCheck = new ProcessAST(abstractSyntaxTree, decimal.MinValue, start);
                     ProcessAST iterationCheck = new ProcessAST(abstractSyntaxTree, decimal.MinValue, iteration);
                     if(startCheck.GetResult() - iterationCheck.GetResult() < 0)
