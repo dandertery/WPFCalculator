@@ -24,6 +24,14 @@ Next Steps:
 # Statistics / Distribution
 Distributions
 
+Discrete Distributions
+![image](https://github.com/dandertery/WPFCalculator/assets/110602627/c2d73959-487c-47bc-bb8e-d19909f9e3a3)
+Binomial distribution shown above. Probability mass function and cumulative distribution function both provided.
+Continous Distributions
+![image](https://github.com/dandertery/WPFCalculator/assets/110602627/ea6c8ea5-c483-4d2e-b276-02771581fc4a)
+Normal distribution shown above. Probability measure function in development. Cumulative distribution can be calculated and graphed numerically but uses unclear except for developing a students understanding of the cumulative distribution function.
+
+
 Chi Test
 ![image](https://github.com/dandertery/WPFCalculator/assets/110602627/482925c0-537c-4c90-8999-cdfda82c11dd)
 Chi test as taught in A-level AQA Further Mathematics. The user inputs the grid size, then the values to receive the expected table. Calculator can then return chi test statistic.
