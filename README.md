@@ -2,7 +2,8 @@
 WPFCalculator is a calculator designed in WPF(Windows Presentation Foundation) based on some of the features of Casio's CG50 Graphical Calculator.
 
 # Run-Solve
-
+![image](https://github.com/dandertery/WPFCalculator/assets/110602627/f2efe127-49de-48de-bd21-1a4fb44254a1)
+Run-Solve used for calculations shown with on-screen keyboard window. Equivalent syntax / parsing system as other calculator functions. Expand through use of matrix calculations through the Matrix Class and visual matrix input created with a UserControl.
 # Graphing
 ![image](https://github.com/dandertery/WPFCalculator/assets/110602627/60e582a9-5ab7-4771-b987-761f740f8869)
 Graphing calculator with adjustable bounds. Useful for intuition / understanding of behaviour of trigonometric, hyperbolic and rational functions.
@@ -26,7 +27,7 @@ Chi Test
 Chi test as taught in A-level AQA Further Mathematics. The user inputs the grid size, then the values to receive the expected table. Calculator can then return chi test statistic.
 ![image](https://github.com/dandertery/WPFCalculator/assets/110602627/1b9a7858-7443-449f-a1eb-74e4665cf20f)
 
-As shown above, 2x2 tables (that have one degree of freedom) asks for if Yate's correction should be used. Yate's correction important in AQA Further Mathematics but current
+As shown above, 2x2 tables (that have one degree of freedom) asks for if Yate's correction should be used. Yate's correction important in AQA Further Mathematics but real-world application limited because it can be unreliable/incorrect.
 
 Sample Analysis
 ![image](https://github.com/dandertery/WPFCalculator/assets/110602627/b1c745ee-d824-4931-b43b-b420b2501579)
