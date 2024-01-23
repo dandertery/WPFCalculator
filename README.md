@@ -14,4 +14,4 @@ WPFCalculator is a calculator designed in WPF(Windows Presentation Foundation) b
 # Recursion
 Not yet implemented
 
-# Improvements and what needs to be implemented next
+# Future Implementation / Requirements
