@@ -2,6 +2,7 @@
 WPFCalculator is a calculator designed in WPF(Windows Presentation Foundation) based on some of the features of Casio's CG50 Graphical Calculator.
 
 # Run-Solve
+![image](https://github.com/dandertery/WPFCalculator/assets/110602627/40a68611-67ab-4b99-8087-63448fc4fba2)
 ![image](https://github.com/dandertery/WPFCalculator/assets/110602627/f2efe127-49de-48de-bd21-1a4fb44254a1)
 Run-Solve used for calculations shown with on-screen keyboard window. Equivalent syntax / parsing system as other calculator functions. Expand through use of matrix calculations through the Matrix Class and visual matrix input created with a UserControl.
 # Graphing
