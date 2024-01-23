@@ -17,7 +17,7 @@ Next Steps:
   
   Asymptotic representation
   
-  Parsing not restricted to y = f(x) eg "xy = 5"
+   Add support for input/parsing of implicit functions eg "xy = 5" "x^2 + y^2 = 25"
   
 # Integration
 
